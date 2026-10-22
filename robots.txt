@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /docs/
+Disallow: /research/
+Disallow: /shots/
+Disallow: /tools/
+Disallow: /design-system/
+
+Sitemap: https://motoijo.com/sitemap.xml

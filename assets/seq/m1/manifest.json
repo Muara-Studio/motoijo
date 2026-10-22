@@ -1,0 +1,17 @@
+{
+  "count": 96,
+  "width": 1600,
+  "height": 1000,
+  "pattern": "{folder}/{nnnn}.webp",
+  "pad": 4,
+  "folders": {
+    "green": { "width": 1600, "height": 1000, "frames": "0001-0096", "end": "end.webp" },
+    "green-900": { "width": 900, "height": 563, "frames": "0001-0096", "end": "end.webp" },
+    "red": { "width": 1600, "height": 1000, "frames": "end only", "end": "end.webp" },
+    "red-900": { "width": 900, "height": 563, "frames": "end only", "end": "end.webp" }
+  },
+  "end": { "green": "green/end.webp", "red": "red/end.webp", "green-900": "green-900/end.webp", "red-900": "red-900/end.webp" },
+  "turn": "frame 1 = pure left side (bike faces left), frame 96 = front; camera orbit 0.947 deg per frame, 7.0 m, 80 mm",
+  "background": "transparent, feathered contact shadow",
+  "label": "Visualisasi 3D, bukan foto produk"
+}

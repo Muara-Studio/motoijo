@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="id" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulasi cicilan | Moto Ijo</title>
+<meta name="description" content="Hitung perkiraan cicilan sepeda listrik dan motor listrik GODA per bulan. Pilih model, DP, dan tenor, lalu tanya cicilannya lewat WhatsApp ke Moto Ijo.">
+<link rel="canonical" href="https://motoijo.com/simulasi-cicilan.html">
+<meta property="og:title" content="Simulasi cicilan | Moto Ijo"><meta property="og:description" content="Hitung perkiraan cicilan sepeda listrik dan motor listrik GODA per bulan, lalu tanya lewat WhatsApp."><meta property="og:image" content="https://motoijo.com/assets/og.jpg"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0C714E">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/plusjakartasans-200_800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/shell.css">
+<link rel="stylesheet" href="css/layanan.css">
+<script type="importmap">{"imports":{"gsap":"https://cdn.jsdelivr.net/npm/gsap@3.15.0/index.js","gsap/":"https://cdn.jsdelivr.net/npm/gsap@3.15.0/","lenis":"https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.mjs","three":"https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"}}</script>
+<script type="module" src="js/shell.js"></script>
+<script type="module" src="js/layanan.js"></script>
+</head>
+<body data-page="simulasi-cicilan" data-nav="light">
+<main id="main">
+
+  <section class="f-kertas cal-hero">
+    <div class="wrap cal-hero__grid" data-reveal>
+      <h1 class="t-xl">Hitung cicilan per bulan.</h1>
+      <p class="t-lead">Pilih model, DP, dan tenor. Angkanya langsung berubah.</p>
+    </div>
+  </section>
+
+  <section class="calc" id="hitung" aria-label="Kalkulator cicilan">
+    <form class="calc__in" id="calc-form" novalidate>
+      <div class="calc__in-inner">
+        <div class="field" data-field="model">
+          <label for="c-model">Model</label>
+          <select id="c-model" name="model"></select>
+        </div>
+
+        <div class="harga" id="harga-box">
+          <div class="harga__fixed" id="harga-fixed">
+            <p class="harga__v num" id="harga-v">Rp 6.999.999</p>
+            <p class="t-small t-muted" id="harga-note">Harga resmi GODA. Tanya harga terbaru lewat WhatsApp.</p>
+          </div>
+          <div class="field" data-field="harga" id="harga-manual" hidden>
+            <label for="c-harga">Harga motor</label>
+            <input id="c-harga" name="harga" type="text" inputmode="numeric" autocomplete="off" placeholder="Rp 0" aria-describedby="err-harga harga-hint">
+            <p class="hint" id="harga-hint">Isi harga yang kamu dapat dari Moto Ijo.</p>
+            <p class="err" id="err-harga" role="alert" hidden>Isi harganya dulu.</p>
+          </div>
+        </div>
+
+        <fieldset class="field fieldset" data-field="dp">
+          <legend>Uang muka (DP)</legend>
+          <div class="tenor" id="dp-chips">
+            <button type="button" class="chip" data-dp="0" aria-pressed="false">0%</button>
+            <button type="button" class="chip" data-dp="10" aria-pressed="false">10%</button>
+            <button type="button" class="chip" data-dp="20" aria-pressed="true">20%</button>
+            <button type="button" class="chip" data-dp="30" aria-pressed="false">30%</button>
+          </div>
+          <p class="calc__dprp num" id="dp-eq">DP Rp 1.400.000</p>
+        </fieldset>
+
+        <fieldset class="field fieldset" data-field="tenor">
+          <legend>Tenor</legend>
+          <div class="tenor" id="tenor">
+            <button type="button" class="chip" data-tenor="3" aria-pressed="false">3 bulan</button>
+            <button type="button" class="chip" data-tenor="6" aria-pressed="false">6 bulan</button>
+            <button type="button" class="chip" data-tenor="12" aria-pressed="true">12 bulan</button>
+          </div>
+          <p class="hint">Tenor seperti di simulasi cicilan GODA.</p>
+        </fieldset>
+
+        <p class="calc__live" aria-hidden="true"><span>Cicilan</span> <b class="num" id="res-live">Rp 638.185</b> <span>/bulan</span></p>
+      </div>
+    </form>
+
+    <div class="calc__out f-aspal">
+      <div class="calc__out-inner">
+        <p class="calc__label" id="res-label">Perkiraan cicilan per bulan</p>
+        <p class="calc__num num" id="res-num">Rp 638.185</p>
+        <p class="sr" id="res-sr" aria-live="polite"></p>
+        <p class="calc__hint" id="res-hint">12 bulan, DP 20% (Rp 1.400.000).</p>
+
+        <div class="btns calc__act">
+          <a class="btn" id="res-cta" href="https://wa.me/6281952557572" target="_blank" rel="noopener">Tanya cicilan lewat WhatsApp<span class="btn__arrow"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-brand-whatsapp"></use></svg></span></a>
+          <a class="link link--light" id="res-tr" href="test-ride.html">Jadwalkan test ride<svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-arrow-right"></use></svg></a>
+        </div>
+
+        <dl class="calc__rows">
+          <div><dt>Pokok pinjaman</dt><dd class="num" id="res-pokok">Rp 5.599.999</dd></div>
+          <div><dt>Biaya penanganan 1%</dt><dd class="num" id="res-fee">Rp 56.000</dd></div>
+          <div><dt>Total bunga</dt><dd class="num" id="res-bunga">Rp 2.002.221</dd></div>
+          <div><dt>Total bayar, termasuk DP</dt><dd class="num" id="res-total">Rp 9.058.220</dd></div>
+        </dl>
+
+        <p class="calc__disc"><span id="res-rate">Cicilan lewat Kredivo: bunga 2,95% per bulan, biaya penanganan 1%.</span> Angka ini perkiraan; cicilan akhir mengikuti persetujuan Kredivo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec f-kertas faq faq--short" aria-labelledby="faq-h">
+    <div class="wrap faq__grid">
+      <h2 class="t-l" id="faq-h" data-reveal>Soal cicilan.</h2>
+      <div class="faq__list" data-reveal>
+        <details class="qa" name="faq">
+          <summary><span class="t-title">Bagaimana hitungnya?</span><span class="qa__ic" aria-hidden="true"><svg class="i"><use href="assets/icons.svg#i-plus"></use></svg></span></summary>
+          <div class="qa__a"><p>Pokok adalah harga dikurangi DP, ditambah biaya penanganan 1%. Bunga flat 2,95% per bulan dihitung dari jumlah itu selama tenor. Cicilan adalah pokok ditambah total bunga, dibagi tenor. Cara hitungnya sama dengan simulasi cicilan GODA.</p></div>
+        </details>
+        <details class="qa" name="faq">
+          <summary><span class="t-title">Berapa bunga dan DP sebenarnya?</span><span class="qa__ic" aria-hidden="true"><svg class="i"><use href="assets/icons.svg#i-plus"></use></svg></span></summary>
+          <div class="qa__a"><p>Tergantung perusahaan pembiayaannya. Kirim hitunganmu lewat WhatsApp untuk tahu angka yang berlaku.</p><a class="link" href="https://wa.me/6281952557572" data-wa="Halo Moto Ijo, berapa bunga, DP minimum, dan tenor yang tersedia untuk cicilan?" target="_blank" rel="noopener">Tanya lewat WhatsApp<svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-arrow-right"></use></svg></a></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

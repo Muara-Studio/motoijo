@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="id" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jadwalkan test ride | Moto Ijo</title>
+<meta name="description" content="Jadwalkan test ride motor listrik GODA di Moto Ijo, Palmerah. Pilih model, hari, dan jam, lalu kirim lewat WhatsApp.">
+<link rel="canonical" href="https://motoijo.com/test-ride.html">
+<meta property="og:title" content="Jadwalkan test ride | Moto Ijo"><meta property="og:description" content="Jadwalkan test ride motor listrik GODA di Moto Ijo, Palmerah. Pilih model, hari, dan jam, lalu kirim lewat WhatsApp."><meta property="og:image" content="https://motoijo.com/assets/og.jpg"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0C714E">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/plusjakartasans-200_800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/shell.css">
+<link rel="stylesheet" href="css/layanan.css">
+<script type="importmap">{"imports":{"gsap":"https://cdn.jsdelivr.net/npm/gsap@3.15.0/index.js","gsap/":"https://cdn.jsdelivr.net/npm/gsap@3.15.0/","lenis":"https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.mjs","three":"https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"}}</script>
+<script type="module" src="js/shell.js"></script>
+<script type="module" src="js/layanan.js"></script>
+</head>
+<body data-page="test-ride" data-nav="dark">
+<main id="main">
+
+  <section class="f-aspal trv" aria-labelledby="tr-h">
+    <div class="wrap trv__grid">
+      <div class="trv__head">
+        <h1 class="t-xl" id="tr-h">Jadwalkan test&nbsp;ride di Palmerah.</h1>
+        <p class="t-lead">Gratis. Pilih model, hari, dan jam, lalu kami konfirmasi lewat WhatsApp.</p>
+        <ul class="trv__proof">
+          <li><svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-shield-check"></use></svg>Distributor resmi GODA</li>
+          <li><svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-map-pin"></use></svg><span data-site="rating">5,0 dari 433 ulasan Google Maps</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-clock"></use></svg><span>Test ride setiap hari, 09.00–15.00</span></li>
+        </ul>
+      </div>
+
+      <div class="tr-card" id="form">
+        <form id="tr-form" novalidate autocomplete="on" aria-labelledby="tr-h">
+          <fieldset class="step" data-field="model" aria-describedby="err-model">
+            <legend class="step__h"><span class="step__n" aria-hidden="true">1</span>Pilih model</legend>
+            <div class="mchips" id="mchips"></div>
+            <div class="field mother" id="mother" hidden>
+              <label for="f-model">Model lain</label>
+              <select id="f-model" name="model"><option value="">Pilih dari daftar</option></select>
+            </div>
+            <p class="err" id="err-model" role="alert" hidden></p>
+          </fieldset>
+
+          <fieldset class="step" data-field="waktu" aria-describedby="err-waktu">
+            <legend class="step__h"><span class="step__n" aria-hidden="true">2</span>Pilih hari dan jam</legend>
+            <div class="days" id="days" role="radiogroup" aria-label="Hari"></div>
+            <div class="times" id="times" role="radiogroup" aria-label="Jam"></div>
+            <p class="err" id="err-waktu" role="alert" hidden></p>
+          </fieldset>
+
+          <fieldset class="step">
+            <legend class="step__h"><span class="step__n" aria-hidden="true">3</span>Nama kamu</legend>
+            <div class="field" data-field="nama">
+              <label class="sr" for="f-nama">Nama</label>
+              <input id="f-nama" name="nama" type="text" autocomplete="name" placeholder="Nama kamu" aria-describedby="err-nama">
+              <p class="err" id="err-nama" role="alert" hidden></p>
+            </div>
+            <details class="note">
+              <summary><svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-plus"></use></svg>Tambah catatan <span>(boleh kosong)</span></summary>
+              <div class="field"><label class="sr" for="f-catatan">Catatan</label><input id="f-catatan" name="catatan" type="text" autocomplete="off" placeholder="Pertanyaan atau permintaan"></div>
+            </details>
+          </fieldset>
+
+          <div class="tr-act">
+            <p class="tr-sum" id="tr-sum"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-calendar-event"></use></svg><span id="tr-sum-t">Pilih model, hari, dan jam.</span></p>
+            <button class="btn" type="submit">Kirim jadwal lewat WhatsApp<span class="btn__arrow"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-brand-whatsapp"></use></svg></span></button>
+          </div>
+          <p class="tr-fine">WhatsApp terbuka dengan pesan siap kirim. Datamu tidak disimpan di situs.</p>
+        </form>
+
+        <div class="handoff" id="handoff" hidden tabindex="-1" aria-labelledby="handoff-h">
+          <h2 class="t-l" id="handoff-h">Pesanmu siap dikirim.</h2>
+          <figure class="bubble" aria-label="Isi pesan WhatsApp">
+            <blockquote class="bubble__txt" id="handoff-msg"></blockquote>
+          </figure>
+          <p>WhatsApp terbuka di tab baru. Kalau belum terbuka, tekan tombol ini.</p>
+          <div class="btns">
+            <a class="btn" id="handoff-open" href="https://wa.me/6281952557572" target="_blank" rel="noopener">Buka WhatsApp<span class="btn__arrow"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-brand-whatsapp"></use></svg></span></a>
+            <button class="link" type="button" id="handoff-edit">Ubah jadwal <svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-refresh"></use></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <ol class="trv__steps" aria-label="Alurnya">
+        <li><span class="trv__ic"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-calendar-event"></use></svg></span><span><b>Kirim jadwal</b>WhatsApp terbuka dengan pesan yang sudah terisi.</span></li>
+        <li><span class="trv__ic"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-brand-whatsapp"></use></svg></span><span><b>Kami konfirmasi</b>Kami balas di WhatsApp untuk memastikan hari dan jamnya.</span></li>
+        <li><span class="trv__ic"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-map-pin"></use></svg></span><span><b>Datang ke Palmerah</b>Coba unitnya langsung di showroom.</span></li>
+      </ol>
+
+      <figure class="shots" data-shots aria-roledescription="carousel" aria-label="Foto showroom Moto Ijo">
+        <div class="shots__track" data-shots-track>
+          <div class="shots__slide" role="group" aria-roledescription="slide" aria-label="1 dari 1"><img src="assets/img/showroom/showroom-depan.webp" alt="Tampak depan showroom: papan oranye GODA di atas Kimora Boutique, motor berjajar di bawah tenda GODA" width="1244" height="1698" decoding="async"></div>
+        </div>
+        <figcaption class="shots__foot">
+          <span class="shots__cap">
+            <span class="t-title">Cari papan oranye GODA di atas Kimora Boutique.</span>
+            <span class="t-small t-muted"><span data-site="addressShort">Jl. Palmerah Barat No.12B</span>. <a class="link" href="https://maps.app.goo.gl/XFvZ4KERAK9xWYGp8" data-maps target="_blank" rel="noopener">Buka rute<svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-arrow-up-right"></use></svg></a></span>
+          </span>
+          <span class="shots__bar" data-shots-bar>
+            <span class="shots__count num" data-shots-count aria-live="polite">1/5</span>
+            <button type="button" class="shots__btn shots__btn--prev" data-shots-prev aria-label="Foto sebelumnya"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-arrow-right"></use></svg></button>
+            <button type="button" class="shots__btn" data-shots-next aria-label="Foto berikutnya"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-arrow-right"></use></svg></button>
+          </span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="f-kertas faq faq--short" aria-labelledby="faq-h">
+    <div class="wrap faq__grid">
+      <h2 class="t-l" id="faq-h" data-reveal>Yang sering ditanyakan.</h2>
+      <div class="faq__list" data-reveal>
+        <details class="qa" name="faq">
+          <summary><span class="t-title">Kapan bisa test ride?</span><span class="qa__ic" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-plus"></use></svg></span></summary>
+          <div class="qa__a"><p>Setiap hari, jam 09.00 sampai 15.00. Pilih hari dan jam di formulir, lalu kami konfirmasi lewat WhatsApp. Showroom sendiri buka <span data-site="hoursLower">setiap hari, 08.30–20.00</span>.</p></div>
+        </details>
+        <details class="qa" name="faq">
+          <summary><span class="t-title">Di mana tempatnya?</span><span class="qa__ic" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-plus"></use></svg></span></summary>
+          <div class="qa__a"><p><span data-site="address">Jl. Palmerah Barat No.12B, Palmerah, Jakarta Barat 11480</span>. Cari papan oranye GODA di atas Kimora Boutique.</p><a class="link" href="https://maps.app.goo.gl/XFvZ4KERAK9xWYGp8" data-maps target="_blank" rel="noopener">Buka rute di Google Maps<svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-arrow-up-right"></use></svg></a></div>
+        </details>
+        <details class="qa" name="faq">
+          <summary><span class="t-title">Ada biayanya?</span><span class="qa__ic" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#i-plus"></use></svg></span></summary>
+          <div class="qa__a"><p>Tidak ada. Test ride gratis.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

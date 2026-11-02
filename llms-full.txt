@@ -1,0 +1,132 @@
+# Moto Ijo: profil lengkap
+
+> Moto Ijo adalah distributor resmi GODA di Palmerah, Jakarta Barat. Showroom ini menjual 13 model motor listrik GODA dalam 2 seri, dengan test ride gratis, simulasi cicilan, servis, dan sparepart.
+
+Berkas ini dibuat otomatis dari data situs (2026-11-02). Sumber data: daftar harga dan brosur Moto Ijo, situs resmi GODA, dan profil Google Maps Moto Ijo. Yang tidak ada di sini tidak kami klaim.
+
+## Siapa
+
+- Nama: Moto Ijo. Nama lain di kanal lain: Motoijo, MotoIjo GODA Palmerah, Goda Palmerah Motoijo.
+- Peran: Distributor resmi GODA di Palmerah, Jakarta Barat. Terdaftar di daftar toko resmi GODA sebagai "Motoijo, Palmerah", kode dealer GD02-240025 (https://www.godaindonesia.com/service-center).
+- Situs ini milik Moto Ijo, bukan situs resmi GODA. Nama GODA, nama model, dan foto produk milik pemiliknya.
+- Rating Google Maps: 5,0 dari 440 ulasan (https://maps.app.goo.gl/XFvZ4KERAK9xWYGp8).
+
+## Lokasi dan kontak
+
+- Alamat: Ruko Palmerah Barat Raya No. 12B, Kel. Palmerah, Jakarta Barat 11480.
+- Patokan: Seberang Bank BRI Palmerah.
+- Koordinat: -6.2071251, 106.7877288. Rute: https://maps.app.goo.gl/XFvZ4KERAK9xWYGp8
+- Jam buka showroom: Setiap hari, 08.30–20.00.
+- WhatsApp: 0819-5255-7572 (https://wa.me/6281952557572). Nomor kedua: 0878-8122-5199.
+- Instagram https://www.instagram.com/moto_ijo/ · TikTok https://www.tiktok.com/@moto_ijo · Facebook https://www.facebook.com/profile.php?id=61558130684521 · Tokopedia https://www.tokopedia.com/motoijo · Shopee https://shopee.co.id/moto_ijo
+
+## Model
+
+13 model GODA dalam 2 seri. Harga: daftar harga Moto Ijo, 31 Okt 2026; model tanpa harga: tanya lewat WhatsApp. Spesifikasi: brosur Moto Ijo edisi September 2026. Tanda ± berarti sekitar.
+
+### Motorbike Series
+
+Motor 600–800 W, kecepatan 40–50 km/jam, jarak tempuh ±40–50 km.
+
+| Model | Tipe | Harga | Jarak tempuh | Kecepatan | Baterai | Motor | Rem | Ban | Fitur | Warna | Halaman |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| GODA Try Lite | 005S | mulai Rp 3.899.000 | ±40 km | 40 km/jam | 48V 12Ah | 600 W | - | - | - | Hitam, Putih, Merah | https://motoijo.com/goda-try-lite-gd005s.html |
+| GODA Apollo Lite | 118S | mulai Rp 3.799.000 | ±40 km | 40 km/jam | 48V 12Ah | 600 W | - | - | Bagasi ganda, E-ABS, 3 mode tenaga | Merah, Hijau gelap, Putih | https://motoijo.com/goda-apollo-lite-118s.html |
+| GODA Sky | 007 | mulai Rp 4.299.000 | ±45 km | 40 km/jam | 48V 12Ah | 650 W | - | - | - | Merah muda, Merah, Hitam, Ungu muda, Putih | https://motoijo.com/goda-sky-gd007.html |
+| GODA Aura | 008 | mulai Rp 4.599.000 | ±45 km | 40 km/jam | 48V 12Ah | 650 W | - | - | - | Oranye, Hitam, Merah muda, Biru, Merah | https://motoijo.com/goda-aura-gd008.html |
+| GODA Obelisk | G11 | tanya harga | 40 km | 40 km/jam | 48V 12Ah | 650 W | - | - | - | Hitam, Merah, Oranye, Merah muda, Putih | https://motoijo.com/goda-obelisk-g11.html |
+| GODA Garuda X | GD002X | tanya harga | ±50 km | 40 km/jam | 48V 12Ah | 700 W | - | - | - | Abu-abu, Biru, Hitam, Hijau sage | https://motoijo.com/goda-garuda-002x.html |
+| GODA Oberon | GD10 | tanya harga | 40 km | 40 km/jam | 48V 12Ah | 650 W | - | - | - | Merah muda, Putih, Ungu, Biru, Hijau sage | https://motoijo.com/goda-oberon-gd10.html |
+| GODA Lemon | 001 | mulai Rp 5.699.000 | ±45 km | 40 km/jam | 48V 12Ah | 650 W | - | - | - | Krem, Kuning, Merah muda, Biru, Mint | https://motoijo.com/goda-lemon-gd001.html |
+| GODA Sunray | G16 | mulai Rp 6.599.000 | 50 km | 50 km/jam | 48V 20Ah | 800 W | - | - | - | Peach, Merah marun, Biru, Oranye | https://motoijo.com/goda-sunray-g16.html |
+
+### Motorcycle Series
+
+Motor 2000–3000 W, kecepatan 75–100 km/jam, jarak tempuh 65–100 km, baterai lithium 64–72V.
+
+| Model | Tipe | Harga | Jarak tempuh | Kecepatan | Baterai | Motor | Rem | Ban | Fitur | Warna | Halaman |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| GODA Altair | G17 | mulai Rp 13.499.000 | 65 km | 75 km/jam | 64V 30Ah | 2000 W | Cakram + tromol | Tubeless 3.00-10 | NFC Tap & Go, Jok terbuka otomatis, Baterai LFP | Tosca, Abu-abu, Krem | https://motoijo.com/goda-altair-g17.html |
+| GODA Luna | GD003 | mulai Rp 13.999.000 | 90 km | 75 km/jam | 64V 30Ah | 2000 W | Cakram ganda | Tubeless 90/80-12 | IoT Start, One-touch start, SGS & SDS, Speedometer digital | Krem, Perak, Hijau, Biru | https://motoijo.com/goda-luna-gd003.html |
+| GODA Mecha Kingkong | GD199 | mulai Rp 16.999.000 | 100 km | 85 km/jam | 72V 23Ah | 2000 W | Cakram terhubung (linked disc) | Tubeless 120/70-10 | Tuas rem bisa diatur, Rem cakram terhubung, Baterai LFP | Merah muda, Putih, Hitam | https://motoijo.com/goda-kingkong-gd199.html |
+| GODA Centurion | G18 | mulai Rp 17.499.000 | 100 km | 100 km/jam | 64V 40Ah | 3000 W | Cakram ganda | Tubeless 90/90-10 | NFC, SSPO, Boost mode, Speedometer digital | Hitam, Putih, Biru | https://motoijo.com/goda-centurion-g18.html |
+
+## Test ride
+
+- Gratis, setiap hari, jam 09.00 sampai 15.00, di showroom Moto Ijo, seberang Bank BRI Palmerah.
+- Cara: pilih model, hari, dan jam di https://motoijo.com/test-ride.html, lalu kirim lewat WhatsApp. Moto Ijo mengonfirmasi hari dan jam lewat WhatsApp.
+
+## Cicilan
+
+- Rumus situs, sama dengan simulasi cicilan GODA: pokok = harga dikurangi DP, ditambah biaya penanganan 1% dari jumlah itu. Bunga flat 2,95% per bulan dari pokok, selama tenor. Cicilan per bulan = (pokok + total bunga) / tenor.
+- Bisa lewat Kredivo, Shopee PayLater, atau BSI Hasanah Card. Tenor: 3, 6, atau 12 bulan. Angka akhir mengikuti persetujuan penyedia cicilannya. Angka di bawah ini perkiraan (contoh lewat Kredivo).
+- Kredivo: bunga 2,95% per bulan, biaya penanganan 1%.
+- Shopee PayLater: bunga mulai 2,95% per bulan, biaya penanganan 1%. Angka akhir mengikuti limit dan profilmu di aplikasi Shopee.
+- BSI Hasanah Card: cicilan 0% lewat fitur Smart Spending (minimal Rp500 ribu). Ujrah bulanan dan iuran tahunan kartu belum termasuk.
+- Kalkulator: https://motoijo.com/simulasi-cicilan.html
+
+Contoh dengan DP 20%:
+
+| Model | Harga | DP 20% | 3 bulan | 6 bulan | 12 bulan |
+|---|---|---|---|---|---|
+| GODA Try Lite | Rp 3.899.000 | Rp 779.800 | Rp 1.143.067 | Rp 618.002 | Rp 355.469 |
+| GODA Apollo Lite | Rp 3.799.000 | Rp 759.800 | Rp 1.113.750 | Rp 602.152 | Rp 346.352 |
+| GODA Sky | Rp 4.299.000 | Rp 859.800 | Rp 1.260.335 | Rp 681.403 | Rp 391.937 |
+| GODA Aura | Rp 4.599.000 | Rp 919.800 | Rp 1.348.286 | Rp 728.954 | Rp 419.288 |
+| GODA Lemon | Rp 5.699.000 | Rp 1.139.800 | Rp 1.670.772 | Rp 903.307 | Rp 519.574 |
+| GODA Sunray | Rp 6.599.000 | Rp 1.319.800 | Rp 1.934.624 | Rp 1.045.959 | Rp 601.626 |
+| GODA Altair | Rp 13.499.000 | Rp 2.699.800 | Rp 3.957.493 | Rp 2.139.627 | Rp 1.230.695 |
+| GODA Luna | Rp 13.999.000 | Rp 2.799.800 | Rp 4.104.077 | Rp 2.218.879 | Rp 1.276.279 |
+| GODA Mecha Kingkong | Rp 16.999.000 | Rp 3.399.800 | Rp 4.983.585 | Rp 2.694.387 | Rp 1.549.787 |
+| GODA Centurion | Rp 17.499.000 | Rp 3.499.800 | Rp 5.130.170 | Rp 2.773.638 | Rp 1.595.372 |
+
+## Servis, sparepart, dan garansi
+
+- Servis dan sparepart original GODA untuk motor dan sepeda listrik GODA, di showroom Moto Ijo. Booking lewat WhatsApp: tulis model dan keluhan. https://motoijo.com/servis.html
+- Garansi dari GODA: sparepart bergaransi. Lama garansi, syarat lengkap, dan yang tidak ditanggung ada di buku garansi tiap unit.
+- Jasa servis gratis seumur hidup, menurut GODA. Ada syaratnya.
+- Klaim kerusakan unit baru wajib video unboxing (syarat GODA).
+- Cara klaim: simpan video unboxing, kirim video, model, dan keluhan lewat WhatsApp, lalu bawa unit dan buku garansinya ke showroom. https://motoijo.com/garansi.html
+
+## Tanya jawab (sama dengan yang tampil di situs)
+
+- **Test ride bayar atau gratis?** Gratis. Pilih jamnya antara 09.00 dan 15.00, setiap hari. (https://motoijo.com/)
+- **Bisa dicicil?** Bisa, lewat Kredivo, Shopee PayLater, atau BSI Hasanah Card. Tenor 3, 6, atau 12 bulan. Angka di situs ini perkiraan. Angka akhir dari penyedia cicilannya. (https://motoijo.com/)
+- **Showroom-nya di mana?** Ruko Palmerah Barat Raya No. 12B, Kel. Palmerah, Jakarta Barat 11480. Seberang Bank BRI Palmerah. Buka setiap hari, 08.30 sampai 20.00. (https://motoijo.com/)
+- **Apa beda Motorbike Series dan Motorcycle Series?** Motorbike Series: Motor 600–800 W, kecepatan 40–50 km/jam, jarak tempuh ±40–50 km. Motorcycle Series: Motor 2000–3000 W, kecepatan 75–100 km/jam, jarak tempuh 65–100 km, baterai lithium 64–72V. (https://motoijo.com/)
+- **Bagaimana hitungnya?** Pokok adalah harga dikurangi DP, ditambah biaya penanganan 1%. Bunga flat 2,95% per bulan dihitung dari jumlah itu selama tenor. Cicilan adalah pokok ditambah total bunga, dibagi tenor. Cara hitungnya sama dengan simulasi cicilan GODA. (https://motoijo.com/simulasi-cicilan.html)
+- **Berapa bunga dan DP sebenarnya?** Angka akhir dari penyedia cicilan yang kamu pilih (Kredivo, Shopee PayLater, atau BSI Hasanah Card), setelah pengajuanmu disetujui. Kirim hitunganmu lewat WhatsApp untuk tahu angka yang berlaku. (https://motoijo.com/simulasi-cicilan.html)
+- **Kapan bisa test ride?** Setiap hari, jam 09.00 sampai 15.00. Pilih hari dan jam di formulir, lalu kami konfirmasi lewat WhatsApp. Showroom sendiri buka setiap hari, 08.30–20.00. (https://motoijo.com/test-ride.html)
+- **Di mana tempatnya?** Ruko Palmerah Barat Raya No. 12B, Kel. Palmerah, Jakarta Barat 11480. Patokannya: seberang Bank BRI Palmerah. (https://motoijo.com/test-ride.html)
+- **Ada biayanya?** Tidak ada. Test ride gratis. (https://motoijo.com/test-ride.html)
+
+## Yang tidak dicantumkan di situs
+
+- Stok per model dan warna: tanyakan lewat WhatsApp.
+- Apakah harga sudah termasuk biaya surat kendaraan (on the road): tanyakan lewat WhatsApp.
+- Promo yang sedang berjalan: diumumkan di Instagram @moto_ijo dan WhatsApp.
+
+## Halaman
+
+- Beranda: https://motoijo.com/
+- Semua model: https://motoijo.com/produk.html
+- Bandingkan model: https://motoijo.com/bandingkan.html
+- Test ride: https://motoijo.com/test-ride.html
+- Simulasi cicilan: https://motoijo.com/simulasi-cicilan.html
+- Servis dan sparepart: https://motoijo.com/servis.html
+- Garansi: https://motoijo.com/garansi.html
+- Tentang Moto Ijo: https://motoijo.com/tentang.html
+- Sepeda listrik atau motor listrik?: https://motoijo.com/panduan-sepeda-vs-motor-listrik.html
+- GODA Try Lite 005S: https://motoijo.com/goda-try-lite-gd005s.html
+- GODA Apollo Lite 118S: https://motoijo.com/goda-apollo-lite-118s.html
+- GODA Sky 007: https://motoijo.com/goda-sky-gd007.html
+- GODA Aura 008: https://motoijo.com/goda-aura-gd008.html
+- GODA Obelisk G11: https://motoijo.com/goda-obelisk-g11.html
+- GODA Garuda X GD002X: https://motoijo.com/goda-garuda-002x.html
+- GODA Oberon GD10: https://motoijo.com/goda-oberon-gd10.html
+- GODA Lemon 001: https://motoijo.com/goda-lemon-gd001.html
+- GODA Sunray G16: https://motoijo.com/goda-sunray-g16.html
+- GODA Altair G17: https://motoijo.com/goda-altair-g17.html
+- GODA Luna GD003: https://motoijo.com/goda-luna-gd003.html
+- GODA Mecha Kingkong GD199: https://motoijo.com/goda-kingkong-gd199.html
+- GODA Centurion G18: https://motoijo.com/goda-centurion-g18.html

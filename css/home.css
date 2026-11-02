@@ -1,0 +1,565 @@
+/* Moto Ijo · home v7 (1 Nov 2026): hero banners (line-up + GODA banners) → model stage per series (signature,
+   after second-ride.de) → test-ride band → resmi + hemat + cicilan → news. The stage itself is css/stage.css (PRODUK).
+   Motion = transform/opacity only; reduced motion = no transitions. */
+
+body[data-page="home"] { background: var(--aspal); }
+
+/* shared bits */
+.btns { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.btn .i { width: 20px; height: 20px; }
+.btn--icon .i { margin-right: -4px; }
+.ctl { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; color: var(--kertas); box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .24); transition: background var(--t-fast), color var(--t-fast), box-shadow var(--t-fast), opacity var(--t-fast); }
+.ctl .i { width: 20px; height: 20px; transition: transform var(--t-base) var(--glide); }
+.ctl--ink { color: var(--aspal); box-shadow: inset 0 0 0 1.5px rgba(14, 19, 17, .24); }
+[data-prev] .i, [data-hprev] .i { transform: rotate(180deg); }
+@media (hover: hover) {
+  .ctl:hover { background: var(--kertas); color: var(--aspal); box-shadow: none; }
+  .ctl--ink:hover { background: var(--aspal); color: var(--kertas); }
+  [data-next]:hover .i, [data-hnext]:hover .i { transform: translateX(3px); } [data-prev]:hover .i, [data-hprev]:hover .i { transform: rotate(180deg) translateX(3px); }
+}
+.ctl:focus-visible { background: var(--kertas); color: var(--aspal); }
+.ctl--ink:focus-visible { background: var(--aspal); color: var(--kertas); }
+.ctl:disabled { opacity: .3; pointer-events: none; }
+.link--light { color: var(--kertas); }
+
+/* =========================================================== 1. hero banners (v7): one picture area + a caption bar per slide.
+   The line-up slide keeps the whole group photo (height = width / 3) and gives the copy the rest; GODA's banners fill the
+   picture area uncovered, so their own titles stay readable. Height fits the first screen without cropping the photo. */
+.hero { --cap: 96px; --ph: 33.333vw; --ctlw: 430px;
+  --media: min(calc(var(--ph) + 230px), max(calc(100svh - var(--nav-h) - var(--cap)), calc(var(--ph) + 150px)));
+  position: relative; padding-top: var(--nav-h); }
+.hero__view { position: relative; height: calc(var(--media) + var(--cap)); overflow: hidden; touch-action: pan-y; }
+.slide { position: absolute; inset: 0; display: grid; grid-template-rows: minmax(0, 1fr) var(--cap); visibility: hidden; background: var(--aspal); }
+.slide.is-on { visibility: visible; z-index: 2; }
+.slide.is-enter { visibility: visible; z-index: 3; }
+.slide__media { position: relative; display: block; overflow: hidden; cursor: grab; -webkit-user-select: none; user-select: none; }
+.hero__view.is-drag .slide__media { cursor: grabbing; }
+.slide__media img { -webkit-user-drag: none; }
+.slide--banner .slide__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--op, 50% 50%); }
+/* v9 motion: the picture on show moves slowly toward the viewer (4% over its dwell), on the same clock as its progress
+   segment: it pauses with it (hover, focus, pause button, off screen). Banners grow from their focal point, the line-up
+   from the floor, so no wheel leaves the frame. No wipe, no streak. */
+.slide--banner .slide__media img { transform-origin: var(--op, 50% 50%); }
+.lineup__pic img { transform-origin: 50% 100%; }
+.slide.is-on .slide__media img, .slide.is-enter .slide__media img { animation: hero-push calc(var(--dwell, 6.5s) + 1.5s) linear both; }
+.hero.is-paused .slide__media img, .hero.is-still .slide__media img { animation-play-state: paused; }
+@keyframes hero-push { to { transform: scale(1.04); } }
+
+/* slide 1: the line-up, copy above the whole group photo */
+.lineup { display: grid; grid-template-rows: minmax(0, 1fr) auto; }
+.lineup__copy { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: end; column-gap: clamp(32px, 5vw, 96px); padding-block: 20px clamp(20px, 2.2vw, 30px); }
+.lineup__l { display: grid; gap: 14px; justify-items: start; }
+.hero__label { display: inline-flex; align-items: center; gap: 10px; font-size: var(--fs-small); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--abu-gelap); }
+.hero__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--oranye); }
+.hero__h { font-size: clamp(34px, 3.4vw, 54px); font-weight: 600; letter-spacing: -.025em; line-height: 1.04; }
+.hero__h > span { display: block; text-wrap: balance; }
+.hero__lead { font-size: var(--fs-lead); line-height: 1.5; color: rgba(242, 240, 235, .86); max-width: 30em; }
+.lineup__pic { display: block; height: var(--ph); background: #C9D3DE; }
+.lineup__pic img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }   /* four bikes, wheels on the floor */
+
+/* caption bar: what this slide is, and its one action; the controls sit on its right */
+.slide__cap { display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; padding-right: calc(var(--m) + var(--ctlw)); }
+.cap__t { display: grid; gap: 2px; min-width: 0; }
+.cap__k { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--abu-gelap); }
+.cap__name { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 14px; font-size: 22px; font-weight: 700; letter-spacing: -.015em; line-height: 1.2; }
+.cap__price { font-size: 16px; font-weight: 500; letter-spacing: 0; color: rgba(242, 240, 235, .78); }
+.cap__price strong { font-weight: 700; color: var(--kertas); }
+.cap__facts { font-size: var(--fs-small); color: var(--abu-gelap); }
+.cap__proof { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 28px; font-size: var(--fs-ui); color: rgba(242, 240, 235, .8); }
+.cap__proof > span { display: inline-flex; align-items: center; gap: 8px; }
+.cap__proof .i { width: 18px; height: 18px; color: var(--abu-gelap); }
+.cap__star { color: var(--kertas); }
+.cap__star .i { color: var(--oranye); }
+.cap__btn { flex: none; }
+.cap__btn--phone { display: none; }   /* the line-up slide's phone-only CTA (client, 2 Nov): same pill + arrow as desktop, but it opens the product page */
+
+.hero__ctl { position: absolute; z-index: 4; left: 0; right: 0; bottom: 0; height: var(--cap); pointer-events: none; }
+.hero__ctl-in { display: flex; align-items: center; justify-content: flex-end; gap: 8px; height: 100%; }
+.hero__ctl-in > * { pointer-events: auto; }
+.hero__segs { display: flex; gap: 4px; margin-right: 12px; }
+.seg { display: grid; align-items: center; width: 44px; height: 44px; }
+.seg i { display: block; height: 4px; border-radius: 4px; background: rgba(255, 255, 255, .2); overflow: hidden; }
+.seg b { display: block; height: 100%; background: var(--oranye); transform: scaleX(0); transform-origin: left; }
+.seg[aria-current="true"] b { animation: tabfill var(--dwell, 6.5s) linear forwards; }
+.seg.is-done b { transform: scaleX(1); background: rgba(255, 255, 255, .55); }
+.hero.is-paused .seg b { animation-play-state: paused; }
+.hero.is-still .seg[aria-current="true"] b { animation: none; transform: scaleX(1); }
+@keyframes tabfill { to { transform: scaleX(1); } }
+@media (hover: hover) { .seg:hover i { background: rgba(255, 255, 255, .4); } }
+.seg:focus-visible { outline-offset: 2px; }
+.ctl__pause { width: 14px; height: 14px; display: block; background: linear-gradient(90deg, currentColor 0 35%, transparent 35% 65%, currentColor 65%); }
+.ctl--pause[aria-pressed="true"] .ctl__pause { background: currentColor; clip-path: polygon(10% 0, 100% 50%, 10% 100%); }
+
+/* =========================================================== 2. signature: the model stage, per series */
+.lu { padding-block: clamp(48px, 5vw, 80px) clamp(56px, 6vw, 96px); overflow: hidden; }
+.lu__head { display: grid; gap: clamp(18px, 2vw, 28px); margin-bottom: clamp(24px, 2.6vw, 40px); }
+.lu__h { font-size: var(--fs-l); font-weight: 600; letter-spacing: -.02em; line-height: 1.1; text-wrap: balance; }
+.lu__series { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; width: 100%; padding: 6px; border-radius: 26px; background: var(--batu); }
+.ser { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "top p" "x p"; align-items: center; column-gap: 24px; row-gap: 4px; min-width: 0; padding: 18px 26px 19px; border-radius: 20px; text-align: left; color: var(--aspal); transition: background var(--t-fast), color var(--t-fast), box-shadow var(--t-fast); }
+.ser__top { grid-area: top; display: flex; align-items: baseline; gap: 12px; }
+.ser__l { font-size: 20px; font-weight: 700; letter-spacing: -.015em; line-height: 1.2; }
+.ser__n { font-size: var(--fs-ui); font-weight: 600; color: var(--abu); }
+.ser__x { grid-area: x; font-size: var(--fs-ui); color: var(--abu); }
+.ser__p { grid-area: p; display: grid; justify-items: end; font-size: var(--fs-small); color: var(--abu); text-align: right; }
+.ser__p strong { font-size: 20px; font-weight: 700; letter-spacing: -.01em; color: var(--aspal); }
+.ser[aria-pressed="true"] { background: var(--aspal); color: var(--kertas); }
+.ser[aria-pressed="true"] .ser__n, .ser[aria-pressed="true"] .ser__x, .ser[aria-pressed="true"] .ser__p { color: var(--abu-gelap); }
+.ser[aria-pressed="true"] .ser__p strong { color: var(--kertas); }
+@media (hover: hover) { .ser[aria-pressed="false"]:hover { background: var(--putih); } }
+
+/* view bleeds to the right edge, so the next model peeks in (second-ride) */
+.lu__stage { --peek: clamp(88px, 14vw, 220px); --gap: clamp(24px, 3vw, 48px); position: relative; }
+.lu__view { position: relative; margin-right: calc(var(--m) * -1); padding-block: 8px; margin-block: -8px; overflow: hidden; touch-action: pan-y; }
+.lu__track { display: flex; align-items: stretch; transition: transform 640ms var(--glide); will-change: transform; }
+.lu__track.is-still { transition: none; }
+.lu__view { cursor: grab; }
+.lu__view.is-drag { cursor: grabbing; }
+.lu__view.is-drag .lu__track, .lu__rail.is-drag { -webkit-user-select: none; user-select: none; }
+.lu__view img, .lu__rail img { -webkit-user-drag: none; }
+.lu__rail.is-drag { cursor: grabbing; scroll-snap-type: none; }
+.lu__slide { flex: 0 0 calc(100% - var(--peek)); margin-right: var(--gap); }
+.lu__slide .stage { height: 100%; align-items: center; }
+.lu .stage__pic { aspect-ratio: 16 / 11; background: none; }
+/* the soft stage is a layer, so the next model can peek in as a bike alone (no empty panel), then its stage fades in */
+.lu .stage__pic::before { content: ""; position: absolute; inset: 0; background: radial-gradient(62% 58% at 50% 46%, var(--st-hi) 0 40%, var(--st-lo) 100%); transition: opacity 480ms var(--glide); }
+.lu .stage__pic::after { transition: opacity 480ms var(--glide); }
+.lu__slide:not(.is-on) .stage__pic::before, .lu__slide:not(.is-on) .stage__pic::after { opacity: 0; }
+.lu__slide .stage__pic img { transition: translate 640ms var(--glide); }
+.lu__slide.is-next .stage__pic img { translate: -18% 0; }
+.lu__slide .stage__txt { transition: opacity 360ms var(--glide), visibility 0s linear 0s; }
+.lu__slide:not(.is-on) .stage__txt { opacity: 0; visibility: hidden; transition: opacity 200ms linear, visibility 0s linear 200ms; }
+.lu__slide .stage__pic { transition: opacity 480ms var(--glide), filter 480ms var(--glide); }
+.lu__slide:not(.is-on) .stage__pic { opacity: .72; filter: blur(2px); }
+.lu__slide .stage__pic.is-life img { left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.lu__slide .stage__pic.is-life::after { display: none; }
+.lu__peek { position: absolute; z-index: 2; top: 0; bottom: 0; right: 0; width: calc(var(--peek) - var(--gap)); cursor: pointer; background: none; }
+/* the road (js/motion.js) belongs to the model on stage; the peeking one shows the bike alone */
+.lu .st-road { transition: opacity 480ms var(--glide); }
+.lu__slide:not(.is-on) .st-road { opacity: 0; }
+.lu__peek[hidden] { display: none; }
+/* before js builds the stage, its parts keep their built size, so nothing below jumps (CLS) */
+.lu__series:empty { height: 103px; }
+.lu__track:empty { height: 540px; }
+.lu__rail:empty { height: 130px; }
+
+/* rail = the catalogue preview of this series; controls on the right */
+.lu__bar { display: flex; align-items: center; gap: 24px; margin-top: clamp(20px, 2.4vw, 32px); }
+.lu__rail { flex: 1; min-width: 0; display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; padding: 4px; margin: -4px; }
+.lu__rail::-webkit-scrollbar { display: none; }
+.lu__rail li { flex: 0 0 auto; display: flex; scroll-snap-align: start; }
+.rl { display: grid; align-content: start; justify-items: start; gap: 1px; width: 116px; padding: 6px 12px 10px; border-radius: 16px; text-align: left; color: var(--aspal); box-shadow: inset 0 0 0 1px var(--garis); transition: background var(--t-fast), box-shadow var(--t-fast); }
+.rl__img { display: block; width: 100%; aspect-ratio: 3 / 2; margin-bottom: 4px; }
+.rl__img img { width: 100%; height: 100%; object-fit: contain; }
+.rl__img.is-life img { object-fit: cover; border-radius: 8px; }
+.rl__n { font-size: var(--fs-ui); font-weight: 700; line-height: 1.2; }
+.rl__p { font-size: 13px; color: var(--abu); }
+.rl[aria-current="true"] { background: var(--putih); box-shadow: inset 0 0 0 2px var(--aspal); }
+@media (hover: hover) { .rl:not([aria-current="true"]):hover { background: var(--putih); } }
+.lu__ctl { order: -1; display: flex; align-items: center; gap: 6px; flex: none; }   /* left of the rail, clear of the dock */
+.lu__ctl [data-prev] { order: 0; } .lu__count { order: 1; } .lu__ctl [data-next] { order: 2; }
+.lu__count { min-width: 3.6em; text-align: center; font-size: var(--fs-ui); font-weight: 600; color: var(--abu); }
+.lu__foot { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 28px; margin-top: clamp(28px, 3vw, 44px); }
+
+/* =========================================================== 2b. "Sekali cas, sampai mana?": range rings around the showroom */
+.jauh { padding-block: clamp(64px, 7vw, 112px) 0; }
+.jauh__in { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; gap: clamp(32px, 5vw, 88px); }
+.jauh__copy { display: grid; gap: 20px; align-content: start; justify-items: start; }
+.jauh__k { font-size: var(--fs-small); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--oranye); }
+.jauh__h { font-size: var(--fs-xl); font-weight: 600; letter-spacing: -.025em; line-height: 1.06; }
+.jauh__h > span { display: block; }
+.jauh__p { font-size: var(--fs-lead); line-height: 1.5; color: rgba(242, 240, 235, .86); max-width: 30em; }
+.jauh__pick { display: grid; gap: 6px; width: 100%; max-width: 460px; margin-top: 4px; }
+.jp { display: grid; grid-template-columns: 5.2em minmax(0, 1fr); align-items: baseline; gap: 14px; min-height: 48px; padding: 10px 16px; border-radius: 14px; text-align: left; color: var(--kertas); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12); transition: background var(--t-fast), box-shadow var(--t-fast), color var(--t-fast); }
+.jp__r { font-size: 18px; font-weight: 700; letter-spacing: -.01em; }
+.jp__m { font-size: var(--fs-small); color: var(--abu-gelap); }
+.jp[aria-checked="true"] { background: var(--kertas); color: var(--aspal); box-shadow: none; }
+.jp[aria-checked="true"] .jp__m { color: var(--abu); }
+@media (hover: hover) { .jp[aria-checked="false"]:hover { background: rgba(255, 255, 255, .06); } }
+.jauh__models { display: none; }
+.jauh__out { min-height: 3em; font-size: var(--fs-ui); line-height: 1.5; color: rgba(242, 240, 235, .86); max-width: 32em; }
+.jauh__out strong { color: var(--kertas); font-weight: 700; }
+.jauh__fig { display: grid; gap: 12px; margin: 0; }
+.jauh__map { aspect-ratio: 90 / 70; border-radius: 28px; overflow: hidden; background: var(--aspal-2); }
+.jauh__map svg { display: block; width: 100%; height: 100%; }
+.jauh__note { font-size: 13px; line-height: 1.5; color: var(--abu-gelap); max-width: 46em; }
+/* the map: sea, distance grid, the reach ring, places, the showroom */
+.jm__sea { fill: #0A0F0D; }
+.jm__seal { fill: rgba(242, 240, 235, .32); font-size: 22px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.jm__grid { fill: none; stroke: rgba(255, 255, 255, .07); stroke-width: 1.5; stroke-dasharray: 4 8; }
+.jm__ring { fill: rgba(46, 158, 70, .16); stroke: #2E9E46; stroke-width: 3; transform-box: fill-box; transform-origin: center; transition: transform 900ms var(--glide); }
+.jm__pl circle { fill: var(--aspal-2); stroke: rgba(242, 240, 235, .38); stroke-width: 2.5; transition: fill 300ms, stroke 300ms; }
+.jm__pl text { fill: rgba(242, 240, 235, .5); font-size: 21px; font-weight: 600; transition: fill 300ms; }
+.jm__pl.is-in circle { fill: #2E9E46; stroke: #2E9E46; }
+.jm__pl.is-in text { fill: var(--kertas); }
+.jm__home circle { fill: var(--oranye); }
+.jm__home .jm__pulse { fill: none; stroke: var(--oranye); stroke-width: 3; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.jm__key text { fill: rgba(242, 240, 235, .7); font-size: 19px; font-weight: 600; }
+.jm__key-home { fill: var(--oranye); }
+.jm__key-in { fill: #2E9E46; }
+.jm__scale path { stroke: rgba(242, 240, 235, .5); stroke-width: 2; }
+.jm__scale text { fill: rgba(242, 240, 235, .5); font-size: 18px; font-weight: 600; }
+/* first sight: the ring grows from the showroom, the places light up outwards, the pin pings once */
+.jauh.is-wait .jm__ring { transform: scale(0) !important; transition: none; }
+.jauh.is-wait .jm__pl.is-in circle { fill: var(--aspal-2); stroke: rgba(242, 240, 235, .38); }
+.jauh.is-wait .jm__pl.is-in text { fill: rgba(242, 240, 235, .5); }
+.jauh:not(.is-wait) .jm__pulse { animation: jm-ping 1400ms 200ms var(--glide) 2; }
+@keyframes jm-ping { from { opacity: .9; transform: scale(1); } to { opacity: 0; transform: scale(3.2); } }
+
+/* =========================================================== 3. benefit band: test ride at the real storefront */
+.ride { padding-block: clamp(56px, 6vw, 96px) 0; }
+.ride__in { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; gap: clamp(28px, 5vw, 96px); }
+.ride__pic { aspect-ratio: 4 / 5; max-height: 600px; border-radius: 28px; overflow: hidden; background: var(--aspal-2); }
+.ride__pic img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.ride__copy { display: grid; gap: 22px; justify-items: start; max-width: 560px; }
+.ride__label { font-size: var(--fs-small); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--oranye); }
+.ride__h { font-size: var(--fs-xl); font-weight: 600; letter-spacing: -.025em; line-height: 1.08; text-wrap: balance; }
+.ride__p { font-size: var(--fs-lead); line-height: 1.5; color: rgba(242, 240, 235, .86); }
+.ride__where { display: flex; align-items: flex-start; gap: 14px; padding: 16px 20px 16px 16px; border-radius: 20px; background: var(--aspal-2); color: var(--kertas); transition: background var(--t-fast); }
+.ride__where:hover, .ride__where:focus-visible { background: #26302C; }
+.ride__where .i { width: 24px; height: 24px; color: var(--oranye); margin-top: 2px; }
+.ride__where > span { display: grid; gap: 2px; }
+.ride__where strong { font-weight: 700; }
+.ride__where span span { font-size: var(--fs-ui); color: var(--abu-gelap); }
+.ride .btns { margin-top: 4px; }
+
+/* =========================================================== 4. resmi, hemat, bayar */
+.why { padding-block: clamp(56px, 6vw, 96px); }
+
+.dist { position: relative; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-areas: "lock lock" "main proof"; column-gap: clamp(32px, 5vw, 96px); row-gap: clamp(36px, 4vw, 56px); padding: clamp(32px, 5vw, 72px); border-radius: 32px; background: var(--ijo); color: var(--putih); overflow: hidden; }
+.dist__lock { grid-area: lock; display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
+.dist__lock img { width: clamp(150px, 16vw, 250px); height: auto; }
+.dist__x { font-size: clamp(20px, 1.8vw, 28px); font-weight: 300; opacity: .7; line-height: 1; }
+.dist__lock .dist__goda { width: auto; height: clamp(40px, 3.9vw, 62px); }  /* GODA's own logo, white lettering on the green field */
+.dist__main { grid-area: main; display: grid; gap: 24px; align-content: start; }
+.dist__h { font-size: clamp(28px, 2.8vw, 44px); font-weight: 600; letter-spacing: -.02em; line-height: 1.1; text-wrap: balance; }
+.dist__p { font-size: var(--fs-lead); line-height: 1.5; max-width: 32em; color: rgba(255, 255, 255, .9); }
+.dist__main .btns { margin-top: 8px; }
+.dist__proof { grid-area: proof; display: grid; gap: 12px; align-content: end; }
+.dist__proof li { display: flex; align-items: center; gap: 16px; padding: 16px 20px 16px 16px; border-radius: 20px; background: var(--ijo-gelap); }
+.dist__proof li > span:last-child { display: grid; gap: 2px; }
+.dist__proof strong { font-size: 17px; font-weight: 700; }
+.dist__proof li > span:last-child > span { font-size: 15px; color: rgba(242, 240, 235, .78); }
+.dist__ic { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: var(--ijo); flex: none; }
+.dist__ic .i { width: 24px; height: 24px; }
+.dist__a { display: flex; align-items: center; gap: 16px; width: 100%; color: inherit; }
+.dist__proof li:has(.dist__a) { padding: 0; }
+.dist__a { padding: 16px 20px 16px 16px; border-radius: 20px; transition: background var(--t-fast); }
+.dist__a > span:nth-child(2) { display: grid; gap: 2px; }
+.dist__a > span:nth-child(2) > span { font-size: 15px; color: rgba(242, 240, 235, .78); }
+.dist__go { width: 20px; height: 20px; margin-left: auto; opacity: .7; }
+.dist__a:hover, .dist__a:focus-visible { background: #0A5A3E; }
+
+.why__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 24px; }
+.calc { position: relative; display: flex; flex-direction: column; gap: 26px; padding: clamp(28px, 4vw, 56px); border-radius: 32px; }
+.calc__h { font-size: clamp(24px, 2.2vw, 34px); font-weight: 600; letter-spacing: -.02em; line-height: 1.12; }
+.calc__h > span { display: block; }
+/* the cicilan partner, chosen in the heading itself: the visible word is plain text (so it always fits), the real <select>
+   lies over it, transparent; an underline and a chevron say it can change */
+.calc__h > .calc__mitra-w { position: relative; display: inline-block; max-width: 100%; padding: 0 1.05em 2px 0; border-bottom: 2px solid currentColor; cursor: pointer;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230E1311' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 0 center / .72em; }
+.calc__mitra-v { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.calc__mitra { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; padding: 0; border: 0; opacity: 0; font: inherit; font-size: 16px; cursor: pointer; appearance: none; -webkit-appearance: none; }
+.calc__mitra-w:hover { border-bottom-color: var(--oranye); }
+.calc__mitra-w:has(.calc__mitra:focus-visible) { outline: 3px solid var(--oranye); outline-offset: 4px; }
+/* the chosen model beside the heading (data-calc-pic): a cut-out on the card, or the brochure photo in a rounded frame */
+.calc__top { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 16px; }
+.calc__pic { position: relative; width: clamp(112px, 11vw, 176px); aspect-ratio: 4 / 3; margin: 0; overflow: hidden; }
+.calc__pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: 50% 100%; -webkit-user-drag: none; }
+.calc__pic img.is-life { object-fit: cover; object-position: 50% 50%; border-radius: 14px; }
+.hemat .calc__pic img:not(.is-life) { filter: drop-shadow(0 10px 14px rgba(0, 0, 0, .45)); }
+.bayar .calc__pic img:not(.is-life) { filter: drop-shadow(0 10px 14px rgba(14, 19, 17, .16)); }
+/* desktop, cards side by side: both headings take two lines' room, so the two "Model" fields line up */
+@media (min-width: 1181px) { .why__row .calc__h { min-height: 2.24em; } }
+.calc .field select { appearance: none; -webkit-appearance: none; color: var(--aspal); background: var(--putih) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%230E1311' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center; padding-right: 48px; font-weight: 600; cursor: pointer; }
+.hemat .field label { color: rgba(242, 240, 235, .86); }
+.hemat .field select { border-color: transparent; }
+.hemat__k { display: block; font-size: 15px; font-weight: 600; letter-spacing: .02em; }
+.hemat .hemat__k { color: var(--abu-gelap); }
+
+/* km input */
+.km { border: 0; margin: 0; padding: 0; display: grid; gap: 14px; min-width: 0; }
+.km legend { padding: 0; margin-bottom: 14px; font-size: var(--fs-small); font-weight: 600; color: rgba(242, 240, 235, .86); }
+.km__row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.km__chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.hemat .chip { box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .22); color: var(--kertas); }
+.hemat .chip[aria-pressed="true"] { background: var(--kertas); color: var(--aspal); box-shadow: none; }
+.km__out { font-size: 22px; font-weight: 700; letter-spacing: -.02em; }
+.range { -webkit-appearance: none; appearance: none; width: 100%; height: 32px; background: transparent; cursor: pointer; --p: 26%; }
+.range::-webkit-slider-runnable-track { height: 6px; border-radius: 6px; background: linear-gradient(90deg, var(--oranye) var(--p), rgba(255, 255, 255, .16) var(--p)); }
+.range::-moz-range-track { height: 6px; border-radius: 6px; background: rgba(255, 255, 255, .16); }
+.range::-moz-range-progress { height: 6px; border-radius: 6px; background: var(--oranye); }
+.range::-webkit-slider-thumb { -webkit-appearance: none; width: 28px; height: 28px; margin-top: -11px; border-radius: 50%; background: var(--kertas); box-shadow: 0 0 0 6px rgba(249, 138, 7, .35); transition: box-shadow var(--t-fast); }
+.range::-moz-range-thumb { width: 28px; height: 28px; border: 0; border-radius: 50%; background: var(--kertas); box-shadow: 0 0 0 6px rgba(249, 138, 7, .35); }
+.range:focus-visible { outline: none; }
+.range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px var(--aspal-2), 0 0 0 7px var(--oranye); }
+.range:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 4px var(--aspal-2), 0 0 0 7px var(--oranye); }
+
+.hemat__out { display: grid; gap: 22px; }
+.hemat__big strong, .bayar__big strong { display: block; white-space: nowrap; font-size: clamp(36px, 3.4vw, 54px); font-weight: 600; letter-spacing: -.02em; line-height: 1; margin-block: 4px 6px; }
+.hemat__big strong { color: var(--kertas); }
+.bars { display: grid; gap: 14px; }
+.bar { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; font-size: 16px; }
+.bar__lab { font-weight: 600; }
+.bar__v { font-weight: 700; }
+.bar__track { grid-column: 1 / -1; height: 14px; border-radius: 14px; background: rgba(255, 255, 255, .08); overflow: hidden; }
+.bar__track i { display: block; height: 100%; border-radius: 14px; transform-origin: left; transform: scaleX(var(--w, 1)); transition: transform 700ms var(--glide); }
+.bar--bensin .bar__track i { background: var(--abu-gelap); }
+.bar--listrik .bar__track i { background: #2E9E46; }
+.hemat__year { font-size: 16px; color: rgba(242, 240, 235, .86); }
+.hemat__year strong { color: var(--kertas); font-weight: 700; }
+.hemat__note { margin-top: -10px; font-size: 14px; color: var(--abu-gelap); }
+.calc .btns, .dist .btns { gap: 12px 20px; }
+
+/* bayar */
+.bayar__form { display: grid; gap: 18px; }
+.seg-f { border: 0; margin: 0; padding: 0; min-width: 0; }
+.seg-f legend { padding: 0; margin-bottom: 8px; font-size: var(--fs-small); font-weight: 600; }
+.seg-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.bayar .chip { box-shadow: inset 0 0 0 1.5px var(--garis); }
+.bayar__out { display: grid; gap: 12px; justify-items: start; padding: 24px; border-radius: 22px; background: var(--putih); }
+.bayar__big strong { color: var(--aspal); }
+.bayar__big .hemat__k { color: var(--abu); }
+.bayar__dp { color: var(--abu); }
+.bayar__out .btns { margin-top: 6px; }
+
+/* =========================================================== 5. FAQ: native details, one open at a time */
+.faq { padding-block: 0 clamp(56px, 6vw, 96px); }
+.faq__in { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 24px clamp(32px, 5vw, 96px); align-items: start; }
+.faq__head { display: grid; gap: 14px; justify-items: start; }
+.faq__h { font-size: var(--fs-l); font-weight: 600; letter-spacing: -.02em; line-height: 1.1; }
+.faq__p { font-size: var(--fs-ui); color: var(--abu-gelap); }
+.faq__p .link { margin-left: 4px; }
+.faq__list { border-top: 1px solid rgba(255, 255, 255, .14); }
+.qa { border-bottom: 1px solid rgba(255, 255, 255, .14); }
+.qa__q { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; padding-block: 12px; font-size: var(--fs-title); font-weight: 600; line-height: 1.3; cursor: pointer; list-style: none; }
+.qa__q::-webkit-details-marker { display: none; }
+.qa__ic { display: grid; place-items: center; width: 36px; height: 36px; flex: none; border-radius: 50%; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .24); transition: transform var(--t-base) var(--glide), background var(--t-fast), color var(--t-fast); }
+.qa__ic .i { width: 18px; height: 18px; }
+.qa[open] .qa__ic { transform: rotate(45deg); background: var(--kertas); color: var(--aspal); box-shadow: none; }
+@media (hover: hover) { .qa__q:hover .qa__ic { background: var(--kertas); color: var(--aspal); box-shadow: none; } }
+.qa__q:focus-visible { outline-offset: 4px; }
+.qa__a { display: grid; gap: 10px; justify-items: start; padding: 0 52px 22px 0; color: rgba(242, 240, 235, .86); }
+.qa__a strong { color: var(--kertas); font-weight: 600; }
+
+/* =========================================================== 6. news */
+.news { padding-block: clamp(64px, 7vw, 112px); }
+.news__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: clamp(32px, 4vw, 48px); }
+.news__h { font-size: clamp(28px, 2.6vw, 40px); font-weight: 600; letter-spacing: -.02em; line-height: 1; }
+.news__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.nc__a { display: flex; flex-direction: column; height: 100%; border-radius: 22px; overflow: hidden; background: var(--putih); color: var(--aspal); transition: translate var(--t-base) var(--glide); }
+.nc__img { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--batu); }
+.nc__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 700ms var(--glide); }
+.nc__body { display: grid; gap: 10px; align-content: start; padding: 20px 22px 24px; }
+.nc__kind { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ijo); }
+.nc__kind .i { width: 16px; height: 16px; }
+.nc__t { font-size: 17px; font-weight: 700; letter-spacing: -.01em; line-height: 1.22; }
+.nc__ex { font-size: 15px; color: var(--abu); line-height: 1.5; }
+.nc--word .nc__a { background: var(--paint); color: var(--ink); }
+.nc--word .nc__kind, .nc--word .nc__ex { color: inherit; opacity: .86; }
+.nc__word { display: flex; align-items: flex-end; aspect-ratio: 16 / 10; padding: 20px 22px 0; font-size: clamp(28px, 2.4vw, 38px); line-height: 1.05; overflow-wrap: anywhere; }
+@media (hover: hover) { .nc__a:hover { translate: 0 -6px; } .nc__a:hover .nc__img img { transform: scale(1.05); } }
+.nc__a:focus-visible { outline-offset: 4px; }
+
+/* =========================================================== dock: test ride + WhatsApp, one tap away on every screen.
+   It replaces the shell's WhatsApp float on this page; it steps aside while the hero's or the band's own test-ride button shows. */
+body[data-page="home"] .wafloat { display: none; }
+.dock { position: fixed; z-index: 40; right: var(--m); bottom: 24px; display: flex; align-items: center; gap: 6px; padding: 6px; border-radius: var(--r-pill); background: var(--aspal); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14), 0 14px 32px rgba(14, 19, 17, .32); transition: opacity var(--t-base), translate var(--t-base) var(--glide), visibility 0s linear 0s; }
+.dock .btn--sm { --hbg: var(--kertas); --hfg: var(--aspal); }
+.dock__wa { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 44px; height: 44px; border-radius: var(--r-pill); background: var(--ijo); color: var(--putih); font-size: var(--fs-ui); font-weight: 600; transition: background var(--t-fast), color var(--t-fast); }
+.dock__wa .i { width: 22px; height: 22px; }
+.dock__wal { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.dock__wa:hover, .dock__wa:focus-visible { background: var(--oranye); color: var(--aspal); }
+@media (min-width: 701px) { body:not(.nav-away) .dock { opacity: 0; translate: 0 16px; visibility: hidden; pointer-events: none; transition: opacity var(--t-base), translate var(--t-base) var(--glide), visibility 0s linear var(--t-base); } }
+body.own-cta .dock, body.at-foot .dock { opacity: 0; translate: 0 16px; visibility: hidden; pointer-events: none; transition: opacity var(--t-base), translate var(--t-base) var(--glide), visibility 0s linear var(--t-base); }
+
+/* =========================================================== responsive */
+@media (max-width: 1100px) { .lu__track:empty { height: 595px; } }
+@media (max-width: 860px) { .lu__track:empty { height: calc((100vw - var(--m) - var(--peek)) * 11 / 16 + 505px); } }
+@media (max-width: 1060px) {
+  .hero { --cap: 136px; }
+  .slide__cap { align-items: flex-start; padding-top: 16px; padding-right: var(--m); }
+  .hero__ctl { height: 60px; }
+  .hero__segs { flex: 1; margin-right: auto; }
+  .seg { flex: 1; width: auto; max-width: 88px; }
+  /* tablet: each series card stacks its three lines */
+  .ser { grid-template-columns: minmax(0, 1fr); grid-template-areas: "top" "x" "p"; padding: 14px 18px 15px; }
+  .ser__l { font-size: 18px; }
+  .ser__n { white-space: nowrap; }
+  .ser__p { display: flex; align-items: baseline; gap: 6px; justify-items: start; text-align: left; margin-top: 4px; }
+  .ser__p strong { font-size: 18px; }
+  .lu__series:empty { height: 130px; }
+}
+@media (min-width: 701px) and (max-height: 800px) { .hero__label { display: none; } }
+@media (max-width: 1180px) {
+  .news__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .why__row { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+  .lineup__copy { grid-template-columns: 1fr; row-gap: 14px; }
+  .dist { grid-template-columns: 1fr; grid-template-areas: "lock" "main" "proof"; }
+  .lu__head { align-items: stretch; flex-direction: column; }
+  .ride__in { grid-template-columns: 1fr; }
+  .jauh__in { grid-template-columns: 1fr; }
+  .jauh__pick { max-width: none; }
+  .faq__in { grid-template-columns: 1fr; }
+  .ride__pic { aspect-ratio: 4 / 3; max-height: none; }
+  .ride__pic img { object-position: 50% 30%; }
+}
+@media (max-width: 700px) {
+  /* phone: the picture area is a tall frame; GODA's portrait banners fill it, the line-up keeps the two middle bikes whole */
+  .hero { --cap: 124px; --ph: 50vw; --media: clamp(470px, 128vw, 560px); }
+  .slide--banner .slide__media img { object-position: var(--op-m, 50% 50%); transform-origin: var(--op-m, 50% 50%); }
+  .lineup__copy { row-gap: 12px; padding-block: 28px 18px; align-content: start; }
+  .lineup__l { gap: 10px; }
+  .hero__label { font-size: 12px; }
+  .hero__h { font-size: clamp(29px, 8.2vw, 36px); }
+  .hero__lead { font-size: 16px; }
+  .slide__cap { gap: 12px; padding-top: 12px; }
+  .cap__k, .cap__facts, .cap__proof .cap__where, .cap__g { display: none; }
+  .cap__name { display: grid; gap: 0; font-size: 18px; }
+  .cap__price { font-size: 14px; }
+  .cap__proof { font-size: 14px; }
+  .cap__btn { min-height: 48px; padding: 6px 6px 6px 16px; gap: 10px; font-size: 15px; }
+  .cap__btn { padding-right: 16px; }
+  .cap__btn .btn__arrow { display: none; }
+  .hero__ctl { height: 52px; }
+  .ctl { width: 44px; height: 44px; }
+
+  .lu__series { width: 100%; gap: 4px; padding: 4px; border-radius: 20px; }
+  .lu__series:empty { height: 98px; }
+  .lu__rail:empty { height: 127px; }
+  .ser { grid-template-columns: minmax(0, 1fr); grid-template-areas: "top" "p"; row-gap: 2px; padding: 10px 12px 11px; border-radius: 16px; }
+  .ser__p { display: block; justify-items: start; text-align: left; font-size: 13px; }
+  .ser__p strong { font-size: 13px; }
+  .ser__top { display: grid; gap: 0; }
+  .ser__l { font-size: 15px; }
+  .ser__x { display: none; }
+  .ser__p { font-size: 13px; }
+  .lu__stage { --peek: 56px; --gap: 14px; }
+  .lu__bar { margin-top: 18px; }
+  .lu__rail { margin-inline: calc(var(--m) * -1); padding-inline: var(--m); scroll-padding-inline: var(--m); }
+  .rl { width: 112px; padding: 6px 10px 10px; }
+  .rl__n { font-size: 14px; }
+  .rl__p { font-size: 12px; }
+  /* phone: the controls sit on the current picture, so a tap shows its result in view */
+  .lu__ctl { position: absolute; z-index: 3; left: 0; top: 0; width: calc(100% + var(--m) - var(--peek)); aspect-ratio: 16 / 11; align-items: flex-end; gap: 8px; padding: 12px; pointer-events: none; }
+  .lu__ctl > * { pointer-events: auto; }
+  .lu__count { order: 0; min-width: 0; margin-right: auto; padding: 6px 12px; border-radius: var(--r-pill); background: rgba(255, 255, 255, .86); color: var(--aspal); font-size: 14px; }
+  .lu__ctl [data-prev] { order: 1; } .lu__ctl [data-next] { order: 2; }
+  .lu__ctl .ctl { width: 44px; height: 44px; background: var(--putih); box-shadow: 0 4px 14px rgba(14, 19, 17, .16); }
+  .lu__ctl .ctl:hover, .lu__ctl .ctl:focus-visible { background: var(--aspal); color: var(--kertas); }
+  .lu__ctl .ctl:disabled { opacity: 0; }
+  .lu__foot { gap: 12px 24px; }
+
+  .jauh__h { font-size: clamp(28px, 8vw, 34px); }
+  .jauh__p { font-size: 16px; }
+  .jp { min-height: 44px; padding: 8px 14px; }
+  .jauh__map { border-radius: 20px; }
+  .jm__pl text { font-size: 30px; }
+  .jm__pl:not(.is-in) text { display: none; }
+  .jm__pl.is-minor text { display: none; }
+  .jm__key text { font-size: 28px; }
+  .jm__seal, .jm__scale text { font-size: 26px; }
+  .ride__pic { aspect-ratio: 1 / 1; border-radius: 22px; }
+  .ride__pic img { object-position: 50% 42%; }
+  .ride__copy { gap: 16px; }
+  .ride__h { font-size: clamp(28px, 8vw, 34px); }
+  .ride__p { font-size: 16px; }
+  .ride .btns { display: grid; grid-template-columns: 1fr auto; width: 100%; gap: 8px; }
+  .ride .btns .btn { justify-content: center; min-height: 52px; font-size: 15px; }
+  .ride .btns .btn .btn__arrow { display: none; }
+
+  .dist { border-radius: 24px; padding: 28px 22px; }
+  .dist__h { font-size: clamp(25px, 7vw, 30px); }
+  .calc { border-radius: 24px; padding: 28px 22px; }
+  .calc__pic { width: 92px; }
+  .calc__h { font-size: clamp(21px, 6vw, 24px); }
+  .km { position: relative; }
+  .km__chips { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; }
+  .km__chips .chip { justify-content: center; padding-inline: 0; }
+  .km__out { position: absolute; right: 0; top: -38px; font-size: 18px; line-height: 24px; }   /* sits on the legend line */
+  .bayar__out { padding: 20px; }
+
+  .qa__q { font-size: 16px; }
+  .qa__a { padding-right: 0; }
+
+  .news__head { flex-direction: column; align-items: flex-start; }
+  .news__grid { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: calc(var(--m) * -1); padding-inline: var(--m); scroll-padding-inline: var(--m); scrollbar-width: none; }
+  .news__grid::-webkit-scrollbar { display: none; }
+  .nc { flex: 0 0 80vw; scroll-snap-align: start; }
+
+  /* phone: the dock is a full-width thumb bar; the page keeps room for it at the end */
+  body[data-page="home"] { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+  .dock { left: 10px; right: 10px; bottom: calc(10px + env(safe-area-inset-bottom)); display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+  .dock .btn--sm { justify-content: center; min-height: 48px; font-size: 15px; }
+  .dock .btn--sm .btn__arrow { display: none; }
+  .dock__wa { width: auto; height: 48px; padding: 0 18px 0 14px; }
+  .dock__wal { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
+  body.at-foot .dock { opacity: 1; translate: none; visibility: visible; pointer-events: auto; }
+}
+
+/* =========================================================== reduced motion: no slide, no blur travel */
+@media (prefers-reduced-motion: reduce) {
+  .jm__ring, .jm__pl circle, .jm__pl text { transition: none !important; }
+  .jm__pulse { animation: none !important; }
+  .lu__track, .lu__slide .stage__pic, .lu__slide .stage__pic img, .lu .stage__pic::before, .lu .stage__pic::after, .lu__slide .stage__txt, .lu .st-road, .dock { transition: none !important; }
+  .slide__media img { animation: none !important; }
+  .lu__slide.is-next .stage__pic img { translate: -18% 0; }
+}
+@media (max-width: 359px) { .calc__pic { width: 64px; } .calc__h { font-size: 19px; } .calc { padding-inline: 18px; } }
+
+/* =========================================================== phone, calmer (1 Nov 2026, client: "mobile masih terasa sangat full").
+   Phone only: 701 px and wider render exactly as before. */
+@media (max-width: 700px) {
+  /* the dock comes back with the nav (on the way up) and steps aside while reading down */
+  body.nav-away .dock { opacity: 0; translate: 0 16px; visibility: hidden; pointer-events: none; transition: opacity var(--t-base), translate var(--t-base) var(--glide), visibility 0s linear var(--t-base); }
+  .dock { padding: 5px; background: rgba(14, 19, 17, .92); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+  .dock .btn--sm, .dock__wa { min-height: 46px; height: 46px; }
+
+  /* hero: swipe + segments + pause; the line-up slide lets the dock carry the action */
+  .hero__ctl [data-hprev], .hero__ctl [data-hnext] { display: none; }
+  .hero__segs { margin-right: 4px; }
+  .slide--lineup .cap__btn--desk { display: none; }
+  .slide--lineup .slide__cap { flex-wrap: wrap; align-content: flex-start; gap: 8px; padding-top: 10px; }   /* align-content: a wrapped flex box in a fixed-height row otherwise stretches its lines and drops the pill onto the control strip */
+  .slide--lineup .cap__btn--phone { display: inline-flex; width: 100%; justify-content: space-between; min-height: 44px; padding: 4px 4px 4px 18px; white-space: nowrap; }
+  .slide--lineup .cap__btn--phone .btn__arrow { display: grid; }   /* grid, like base: inline-flex dropped place-items and parked the icon at the circle's left edge */
+  .slide--lineup .cap__proof { display: none; }   /* client, 2 Nov: the rating line broke the phone layout; the CTA pill owns the caption row */
+
+  /* model stage: the picture's own counter and arrows are enough; the thumbnail rail goes */
+  .lu { padding-block: 48px 56px; }
+  .lu__rail, .lu__rail:empty { display: none; }
+  .lu__bar { margin-top: 0; }
+  .lu__foot { margin-top: 20px; }
+
+  /* range map: six km chips in two rows; the models of the chosen range under them */
+  .jauh { padding-top: 56px; }
+  .jauh__copy { gap: 16px; }
+  .jauh__pick { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .jp { grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 0; min-height: 48px; padding: 10px 6px; }
+  .jp__r { font-size: 16px; }
+  .jp__m { display: none; }
+  .jauh__models { display: block; margin-top: -4px; font-size: var(--fs-small); color: var(--abu-gelap); }
+  .jauh__out { min-height: 0; }
+  .jauh__note { font-size: 13px; }
+
+  /* resmi: the three facts as a quiet list, not three cards */
+  .dist { row-gap: 28px; }
+  .dist__lock img { width: 132px; }
+  .dist__lock .dist__goda { height: 34px; }
+  .dist__p { font-size: 16px; }
+  .dist__proof { gap: 0; }
+  .dist__proof li { padding: 14px 0; border-radius: 0; background: none; box-shadow: 0 -1px 0 rgba(255, 255, 255, .16); }
+  .dist__proof li:has(.dist__a) { padding: 0; }
+  .dist__a { padding: 14px 0; border-radius: 0; }
+  .dist__a:hover, .dist__a:focus-visible { background: none; }
+  .dist__ic { width: 40px; height: 40px; border-radius: 12px; }
+
+  /* calculators and the rest: a little more air between blocks */
+  .why { padding-block: 56px; }
+  .why__row { gap: 16px; margin-top: 16px; }
+  .calc { gap: 22px; }
+  .faq { padding-bottom: 56px; }
+  .news { padding-block: 56px; }
+}
+@media (max-width: 700px) { .bayar .calc__pic { width: 64px; } }
+@media (max-width: 380px) { .bayar .calc__pic { width: 52px; } .calc__h > .calc__mitra-w { font-size: .9em; } }

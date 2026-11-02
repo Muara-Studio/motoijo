@@ -1,0 +1,213 @@
+/* Moto Ijo · tentang.css (1 Nov 2026): the "Tentang" page only.
+   Client: "seperti foto-foto dari Google Maps, lalu masukkan peta juga di sebelah kanannya. Taruh di hero saja."
+   Hero = Google-Maps-style photo grid (one large, four small, "Lihat semua foto") + live map + the details.
+   Tokens, buttons and links from base.css; nav, footer and the WhatsApp float from shell.css. This page does not load
+   info.css, so the two CTA helpers it needs are repeated here. No colour or font is added. */
+
+/* CTA helper: the float steps aside while a WhatsApp link in <main> is in view (js/info.js toggles body.wa-inview) */
+body.wa-inview .wafloat { opacity: 0; visibility: hidden; transition: opacity var(--t-base), visibility 0s linear var(--t-base); }
+html:has(.tt-lb[open]) { overflow: hidden; }
+
+/* ---------- 1. hero ---------- */
+.tt-hero { padding-top: calc(var(--nav-h) + clamp(28px, 3.6vw, 56px)); padding-bottom: clamp(72px, 8vw, 128px); }
+.tt-head { display: grid; gap: 12px; margin-bottom: clamp(22px, 2.4vw, 34px); }
+.tt-h1 { max-width: 18em; }
+.tt-rate { display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-ui); font-weight: 600; }
+.tt-rate .i { width: 18px; height: 18px; color: var(--ijo); }
+
+.tt-place { --h: clamp(480px, 42vw, 620px); display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--g); }
+
+/* photo grid: one large photo spanning two rows, four small ones; outer corners rounded like the house photos */
+.tt-gal { position: relative; height: var(--h); min-width: 0; }
+.tt-grid { display: grid; height: 100%; gap: 6px; grid-template-columns: minmax(0, 2.3fr) minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); border-radius: 24px; overflow: hidden; }
+.tt-cell { position: relative; display: block; min-width: 0; min-height: 0; overflow: hidden; background: var(--batu); }
+.tt-cell img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); transition: transform var(--t-slow) var(--glide), filter var(--t-base); }
+.tt-cell:first-child { grid-row: 1 / span 2; }
+.tt-cell:nth-child(n + 6) { display: none; }
+.tt-cell:focus-visible { outline-offset: -4px; }
+.tt-cell:focus-visible img { filter: brightness(.9); }
+@media (hover: hover) {
+  .tt-cell:hover img { transform: scale(1.035); filter: brightness(.94); }
+}
+/* fewer photos in the data: the grid closes up */
+.tt-grid[data-n="1"] { grid-template-columns: minmax(0, 1fr); }
+.tt-grid[data-n="2"], .tt-grid[data-n="3"] { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+.tt-grid[data-n="2"] .tt-cell:nth-child(2) { grid-row: 1 / span 2; }
+.tt-grid[data-n="4"] .tt-cell:nth-child(2) { grid-column: 2 / span 2; }
+.tt-gal.is-empty { display: none; }
+
+/* "Lihat semua foto (N)": the Google Maps chip on the photos */
+.tt-all { position: absolute; right: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px 0 14px; border-radius: var(--r-pill); background: var(--kertas); color: var(--aspal); font-size: var(--fs-ui); font-weight: 600; box-shadow: 0 6px 20px rgba(14, 19, 17, .2); transition: background var(--t-fast), color var(--t-fast); }
+.tt-all .i { width: 20px; height: 20px; }
+.tt-all:hover, .tt-all:focus-visible { background: var(--aspal); color: var(--kertas); }
+
+/* map + details */
+.tt-side { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 22px; height: var(--h); min-width: 0; }
+.tt-map { position: relative; min-height: 240px; border-radius: 24px; overflow: hidden; background: var(--batu); }
+.tt-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.tt-map__pin { position: absolute; left: 50%; top: 50%; width: 36px; height: 36px; translate: -50% -50%; color: var(--abu); }
+.tt-det { display: grid; gap: 18px; justify-items: start; }
+.tt-info { display: grid; gap: 14px; }
+.tt-info li { display: flex; align-items: flex-start; gap: 14px; }
+.tt-info li > .i { width: 22px; height: 22px; margin-top: 1px; color: var(--ijo); }
+.tt-info li > span { display: grid; gap: 2px; }
+.tt-info strong { font-size: var(--fs-title); font-weight: 600; line-height: 1.3; letter-spacing: -.005em; }
+.tt-info strong + span { font-size: var(--fs-ui); line-height: 1.45; color: var(--abu); }
+.tt-open b { font-weight: 600; color: var(--aspal); }
+.tt-open b.is-open { color: var(--ijo); }
+
+/* ---------- 2. who + what you can do ---------- */
+.tt-do__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); grid-template-rows: auto 1fr; grid-template-areas: "intro list" "act list"; column-gap: clamp(40px, 7vw, 128px); row-gap: 40px; align-items: start; }
+.tt-do__intro { grid-area: intro; display: grid; gap: 24px; justify-items: start; }
+.tt-do__intro h2 { max-width: 10em; }
+.tt-do__intro .t-lead { max-width: 26em; color: rgba(255, 255, 255, .9); }
+.tt-do__act { grid-area: act; }
+.tt-list { grid-area: list; display: grid; }
+.tt-list li { display: flex; align-items: flex-start; gap: 18px; padding-block: 22px; border-top: 1.5px solid rgba(255, 255, 255, .18); }
+.tt-list li:last-child { border-bottom: 1.5px solid rgba(255, 255, 255, .18); }
+.tt-list li > span:last-child { display: grid; gap: 4px; padding-top: 2px; }
+.tt-list strong { font-size: var(--fs-title); font-weight: 600; line-height: 1.3; }
+.tt-list strong + span { font-size: var(--fs-ui); line-height: 1.5; color: rgba(255, 255, 255, .8); }
+.tt-ic { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: var(--ijo-gelap); flex: none; }
+.tt-ic .i { width: 24px; height: 24px; }
+
+/* ---------- 3. reviews (only when data/ulasan.js has items) ---------- */
+.tt-rev[hidden] { display: none; }
+.tt-rev__grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: clamp(40px, 6vw, 112px); row-gap: 40px; align-items: start; }
+.tt-rev__head { display: grid; gap: 22px; justify-items: start; }
+.tt-rev__head h2 { max-width: 9em; }
+.tt-rev__score { display: flex; align-items: center; gap: 14px; }
+.tt-rev__score > b { font-size: var(--fs-l); font-weight: 600; letter-spacing: -.02em; line-height: 1; }
+.tt-rev__score > span { display: grid; gap: 4px; font-size: var(--fs-small); color: var(--abu); }
+.tt-stars { display: inline-flex; gap: 2px; color: var(--ijo); }
+.tt-stars .i { width: 16px; height: 16px; }
+.tt-rev__list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: var(--g); }
+.tt-quote { display: grid; grid-template-rows: auto 1fr auto; gap: 16px; padding: clamp(22px, 2.4vw, 32px); border-radius: 24px; background: var(--putih); }
+.tt-quote blockquote { margin: 0; }
+.tt-quote blockquote p { font-size: var(--fs-lead); line-height: 1.5; }
+.tt-quote__by { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; font-size: var(--fs-small); }
+.tt-quote__by b { font-weight: 600; }
+.tt-quote__by span:last-child { color: var(--abu); }
+
+/* ---------- 4. closing: dark card on paper, copy left, a real photo right ---------- */
+.tt-end { padding-block: clamp(56px, 6vw, 96px) clamp(72px, 8vw, 128px); }
+.tt-rev:not([hidden]) + .tt-end { padding-top: 0; }
+.tt-end__card { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); border-radius: 32px; overflow: hidden; }
+.tt-end__in { display: grid; gap: clamp(20px, 2vw, 28px); justify-items: start; align-content: center; padding: clamp(32px, 5.5vw, 88px); }
+.tt-end__in h2 { max-width: 11em; }
+.tt-end__in .t-lead { max-width: 26em; color: rgba(242, 240, 235, .86); }
+.tt-end__pic { position: relative; margin: 0; min-height: 440px; background: var(--aspal-2); }
+.tt-end__pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
+.tt-contact { display: flex; flex-wrap: wrap; gap: 24px clamp(40px, 5vw, 80px); margin: clamp(8px, 1vw, 16px) 0 0; }
+.tt-contact dt { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: var(--fs-small); font-weight: 600; color: var(--abu-gelap); }
+.tt-contact dt .i { width: 18px; height: 18px; color: var(--oranye); }
+.tt-contact dd { margin: 0; line-height: 1.55; }
+.tt-end__act { margin-top: clamp(12px, 2vw, 24px); }
+
+/* ---------- lightbox (a <dialog> built by js/tentang.js on first open) ---------- */
+.tt-lb { inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: var(--aspal); color: var(--kertas); overflow: hidden; }
+.tt-lb[open] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto auto; }
+.tt-lb::backdrop { background: rgba(14, 19, 17, .9); }
+.tt-lb__top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px var(--m); }
+.tt-lb__count { font-size: var(--fs-ui); font-weight: 600; color: var(--abu-gelap); }
+.tt-lb__x, .tt-lb__nav { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; color: var(--kertas); box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .22); transition: background var(--t-fast), color var(--t-fast), opacity var(--t-fast); }
+.tt-lb__x .i, .tt-lb__nav .i { width: 22px; height: 22px; }
+.tt-lb__x:hover, .tt-lb__x:focus-visible, .tt-lb__nav:hover, .tt-lb__nav:focus-visible { background: var(--kertas); color: var(--aspal); box-shadow: none; }
+.tt-lb__stage { position: relative; overflow: hidden; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+.tt-lb__stage.is-drag { cursor: grabbing; }
+.tt-lb__track { display: flex; height: 100%; transform: translate3d(calc(var(--i, 0) * -100% + var(--dx, 0px)), 0, 0); transition: transform 480ms var(--glide); }
+.tt-lb__stage.is-drag .tt-lb__track, .tt-lb__track.is-instant { transition: none; }
+/* flex (not grid) so the image's max-height: 100% resolves against the slide's definite height */
+.tt-lb__slide { flex: 0 0 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; padding: 4px calc(var(--m) + 64px); }
+.tt-lb__slide img { flex: none; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 12px; pointer-events: none; -webkit-user-drag: none; }
+.tt-lb__nav { position: absolute; top: 50%; translate: 0 -50%; background: rgba(14, 19, 17, .5); }
+.tt-lb__nav--prev { left: var(--m); }
+.tt-lb__nav--prev .i { rotate: 180deg; }
+.tt-lb__nav--next { right: var(--m); }
+.tt-lb__nav[aria-disabled="true"] { opacity: .28; pointer-events: none; }
+.tt-lb__cap { min-height: 3em; max-width: 46em; margin-inline: auto; padding: 14px var(--m) 0; font-size: var(--fs-ui); line-height: 1.5; text-align: center; color: rgba(242, 240, 235, .86); }
+.tt-lb__thumbs { display: flex; gap: 8px; justify-content: safe center; padding: 10px var(--m) 18px; overflow-x: auto; scrollbar-width: none; }
+.tt-lb__thumbs::-webkit-scrollbar { display: none; }
+.tt-lb__thumb { flex: none; width: 56px; height: 56px; border-radius: 10px; overflow: hidden; opacity: .5; transition: opacity var(--t-fast); }
+.tt-lb__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.tt-lb__thumb:hover, .tt-lb__thumb:focus-visible { opacity: .85; }
+.tt-lb__thumb[aria-current="true"] { opacity: 1; outline: 2px solid var(--kertas); outline-offset: 2px; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1100px) {
+  .tt-place { grid-template-columns: minmax(0, 1fr); --h: clamp(420px, 58vw, 560px); }
+  .tt-side { height: auto; grid-template-rows: none; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: center; gap: var(--g) clamp(24px, 4vw, 48px); }
+  .tt-map { height: 340px; }
+  .tt-do__grid, .tt-rev__grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-template-areas: "intro" "list" "act"; }
+  .tt-end__card { grid-template-columns: minmax(0, 1fr); }
+  .tt-end__pic { order: -1; min-height: 0; aspect-ratio: 16 / 10; }
+}
+@media (max-width: 860px) {
+  /* phone: the photos become a swipeable strip at their own shape (no crop), edge to edge */
+  .tt-gal { height: auto; margin-inline: calc(var(--m) * -1); }
+  .tt-grid { display: flex; gap: 8px; height: clamp(300px, 86vw, 420px); padding-inline: var(--m); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: var(--m); scrollbar-width: none; border-radius: 0; }
+  .tt-grid::-webkit-scrollbar { display: none; }
+  .tt-grid::after { content: ""; flex: 0 0 1px; }
+  .tt-grid.is-drag { scroll-snap-type: none; cursor: grabbing; }
+  .tt-cell, .tt-cell:first-child, .tt-cell:nth-child(n + 6) { display: block; flex: none; height: 100%; aspect-ratio: var(--ar); grid-row: auto; grid-column: auto; border-radius: 18px; scroll-snap-align: start; }
+  .tt-all { right: calc(var(--m) + 10px); bottom: 10px; min-height: 40px; padding-inline: 12px 14px; font-size: var(--fs-small); }
+  .tt-side { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .tt-map { height: auto; aspect-ratio: 4 / 3; min-height: 0; border-radius: 20px; }
+  .tt-lb__slide { padding: 4px 12px; }
+  .tt-lb__nav { top: auto; bottom: 8px; translate: none; width: 44px; height: 44px; }
+  .tt-lb__stage { padding-bottom: 60px; }
+  .tt-lb__top { padding-block: 8px; }
+}
+@media (max-width: 560px) {
+  .tt-do__act .btn, .tt-end__act, .tt-end__act .btn { width: 100%; }
+  .tt-do__act .btn, .tt-end__act .btn { justify-content: space-between; }
+  .tt-lb__thumb { width: 48px; height: 48px; }
+}
+
+/* ---------- phone (≤ 700 px, 1 Nov 2026): "masih terasa sangat full". One idea per screen, hairlines instead of boxes,
+   duplicates cut. Everything here is inside this query, so 701 px and wider render exactly as before. ---------- */
+@media (max-width: 700px) {
+  /* text links: a 44 px tap area without moving the layout */
+  main .link { position: relative; }
+  main .link::after { content: ""; position: absolute; inset: -10px -6px; }
+
+  /* 1. hero: title, photos, then the place (address first, the map after it) */
+  .tt-hero { padding-top: calc(var(--nav-h) + 24px); padding-bottom: 64px; }
+  .tt-head { gap: 10px; margin-bottom: 20px; }
+  .tt-grid { height: clamp(250px, 74vw, 320px); }
+  .tt-all { min-height: 44px; }
+  .tt-place { row-gap: 28px; }
+  .tt-side { gap: 24px; }
+  .tt-det { order: -1; gap: 14px; }
+  .tt-info { gap: 16px; }
+  .tt-map { aspect-ratio: 16 / 10; border-radius: 18px; }
+
+  /* 2. who + what you can do: a plain hairline list */
+  .tt-do { padding-block: 64px; }
+  .tt-do__grid { row-gap: 28px; }
+  .tt-do__intro { gap: 16px; }
+  .tt-list li { gap: 16px; padding-block: 16px; border-top-width: 1px; }
+  .tt-list li:last-child { border-bottom-width: 1px; }
+  .tt-list strong { font-size: 17px; }
+  .tt-ic { width: 40px; height: 40px; border-radius: 12px; }
+  .tt-ic .i { width: 22px; height: 22px; }
+
+  /* 3. reviews: one row you swipe, score and link on one line */
+  .tt-rev { padding-block: 64px; }
+  .tt-rev__grid { row-gap: 24px; }
+  .tt-rev__head { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 16px 20px; }
+  .tt-rev__head h2 { grid-column: 1 / -1; }
+  .tt-rev__score { gap: 12px; }
+  .tt-rev__score > b { font-size: 28px; }
+  .tt-rev__list { display: flex; gap: 12px; margin-inline: calc(var(--m) * -1); padding-inline: var(--m); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: var(--m); scrollbar-width: none; }
+  .tt-rev__list::-webkit-scrollbar { display: none; }
+  .tt-rev__list::after { content: ""; flex: 0 0 1px; }
+  .tt-quote { flex: 0 0 84%; gap: 14px; padding: 22px; border-radius: 20px; scroll-snap-align: start; }
+
+  /* 4. closing: heading, one line, one button. The photo repeats the hero strip and the numbers repeat the footer below */
+  .tt-end { padding-block: 64px 72px; }
+  .tt-end__card { border-radius: 24px; }
+  .tt-end__pic, .tt-contact { display: none; }
+  .tt-end__in { gap: 16px; padding: 32px 24px; }
+  .tt-end__act { margin-top: 8px; }
+}

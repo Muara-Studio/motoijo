@@ -1,0 +1,107 @@
+/* Moto Ijo · stage.css (v6, 31 Okt 2026): the shared model stage (js/stage.js), spec meters, colour swatches, price.
+   After second-ride.de's model stage: the bike big on a soft light stage, words calm, one orange action.
+   Tokens from base.css only. Meters fill in ijo (green = go); orange stays on the action. */
+
+/* ---------- meters ---------- */
+.meters { display: grid; gap: 14px; margin: 0; }
+.mt { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; column-gap: 12px; row-gap: 7px; }
+.mt__k { font-size: var(--fs-small); color: var(--st-mute, var(--abu)); }
+.mt__v { margin: 0; font-size: 17px; font-weight: 600; letter-spacing: -.01em; line-height: 1.2; white-space: nowrap; color: var(--st-ink, var(--aspal)); }
+.mt__u { font-size: 14px; font-weight: 500; color: var(--st-mute, var(--abu)); }
+.mt__bar { grid-column: 1 / -1; position: relative; height: 6px; margin: 0; border-radius: 6px; background: var(--st-track, rgba(14, 19, 17, .1)); overflow: hidden; }
+.mt__fill { position: absolute; inset: 0 auto 0 0; width: calc(var(--p) * 100%); border-radius: inherit; background: var(--st-fill, var(--ijo)); transform-origin: left; animation: mt-in 900ms var(--glide) both; }
+@keyframes mt-in { from { transform: scaleX(0); } }
+/* range reads as a battery: ten cells. The mask sits on the bar (it does not move), so a fill that grows lights whole
+   cells; js/motion.js meters() charges them one at a time (v9 motion, 1 Nov 2026) */
+.mt--range .mt__bar { background: none; -webkit-mask: repeating-linear-gradient(90deg, #000 0 calc(10% - 3px), transparent calc(10% - 3px) 10%); mask: repeating-linear-gradient(90deg, #000 0 calc(10% - 3px), transparent calc(10% - 3px) 10%); }
+.mt--range .mt__bar::before { content: ""; position: absolute; inset: 0; background: var(--st-track, rgba(14, 19, 17, .1)); }
+.mt--range .mt__fill { border-radius: 0; }
+.meters--compact { gap: 8px; }
+.meters--compact .mt { row-gap: 4px; column-gap: 8px; }
+.meters--compact .mt__k { font-size: 13px; }
+.meters--compact .mt__v { font-size: 14px; }
+.meters--compact .mt__u { font-size: 13px; }
+.meters--compact .mt__bar { height: 4px; }
+.meters--compact .mt--range .mt__bar { -webkit-mask-image: repeating-linear-gradient(90deg, #000 0 calc(10% - 2px), transparent calc(10% - 2px) 10%); mask-image: repeating-linear-gradient(90deg, #000 0 calc(10% - 2px), transparent calc(10% - 2px) 10%); }
+
+/* ---------- swatches ---------- */
+.sw { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.sw__i { display: inline-flex; align-items: center; gap: 8px; }
+.sw__dot { width: 22px; height: 22px; border-radius: 50%; background: var(--c); box-shadow: inset 0 0 0 1px rgba(14, 19, 17, .2), 0 0 0 2px var(--st-ring, var(--putih)); }
+.sw--names { gap: 8px 18px; }
+.sw__n { font-size: var(--fs-small); color: var(--st-ink, var(--aspal)); }
+.sw--compact { gap: 6px; }
+.sw--compact .sw__dot { width: 14px; height: 14px; box-shadow: inset 0 0 0 1px rgba(14, 19, 17, .22); }
+
+/* ---------- price ---------- */
+.st-price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 8px; }
+.st-price__k { font-size: var(--fs-small); font-weight: 600; color: var(--st-mute, var(--abu)); }
+.st-price__v { font-size: 20px; font-weight: 700; letter-spacing: -.01em; line-height: 1.15; color: var(--st-ink, var(--aspal)); }
+.st-ask { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 600; color: var(--ijo); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+.st-ask .i { width: 20px; height: 20px; }
+.st-ask:hover, .st-ask:focus-visible { color: var(--st-ink, var(--aspal)); }
+
+/* ---------- secondary button (outline) ---------- */
+.st-line { --bg: transparent; --fg: var(--st-ink, var(--aspal)); --hbg: var(--st-ink, var(--aspal)); --hfg: var(--st-paper, var(--kertas)); box-shadow: inset 0 0 0 1.5px currentColor; }
+
+/* ---------- the stage ---------- */
+.stage { --st-ink: var(--aspal); --st-mute: var(--abu); --st-paper: var(--kertas); --st-ring: var(--putih);
+  --st-hi: var(--putih); --st-lo: var(--batu); --st-floor: rgba(14, 19, 17, .2); --st-track: rgba(14, 19, 17, .1); --st-fill: var(--ijo);
+  display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); align-items: center; gap: clamp(28px, 4vw, 64px); color: var(--st-ink); }
+.stage--dark { --st-ink: var(--kertas); --st-mute: var(--abu-gelap); --st-paper: var(--aspal); --st-ring: var(--aspal-2);
+  --st-hi: #2B3430; --st-lo: var(--aspal-2); --st-floor: rgba(0, 0, 0, .5); --st-track: rgba(255, 255, 255, .12); --st-fill: var(--kertas); }
+.stage--dark .sw__dot { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .3), 0 0 0 2px var(--st-ring); }
+.stage__pic { position: relative; aspect-ratio: 4 / 3; border-radius: 28px; overflow: hidden; background: radial-gradient(62% 58% at 50% 46%, var(--st-hi) 0 40%, var(--st-lo) 100%); }
+.stage__pic::after { content: ""; position: absolute; left: 18%; right: 18%; bottom: 9%; height: 7%; border-radius: 50%; background: radial-gradient(closest-side, var(--st-floor), transparent); }
+.stage__pic img { position: absolute; z-index: 1; left: 8%; top: 8%; width: 84%; height: 80%; object-fit: contain; object-position: 50% 100%; }
+.stage__pic img.is-life { inset: 0; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+/* motion (js/motion.js): the bike leans about its wheels on the ground; the road is lane dashes just under the tyres.
+   At rest the dashes stand still; when a model arrives they run at its top speed, brake and stop. */
+.stage__pic img { transform-origin: 50% 100%; }
+.st-road { position: absolute; left: 0; right: 0; bottom: 10.5%; height: 3px; overflow: hidden; pointer-events: none; --period: 60px;
+  -webkit-mask: linear-gradient(90deg, transparent 4%, #000 26%, #000 74%, transparent 96%); mask: linear-gradient(90deg, transparent 4%, #000 26%, #000 74%, transparent 96%); }
+.st-road i { position: absolute; top: 0; bottom: 0; left: -200%; width: 300%; border-radius: 3px;
+  background: repeating-linear-gradient(90deg, var(--st-road) 0 calc(var(--period) * .42), transparent calc(var(--period) * .42) var(--period)); }
+.stage { --st-road: rgba(14, 19, 17, .26); }
+.stage--dark { --st-road: rgba(255, 255, 255, .22); }
+.stage__pic.is-life .st-road, .stage__pic:has(> img.is-life) .st-road { display: none; }
+.stage__txt { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.stage__head { display: grid; gap: 6px; }
+.stage__series { font-size: var(--fs-small); font-weight: 600; color: var(--st-mute); }
+.stage__name { font-size: var(--fs-moto); font-weight: 600; letter-spacing: -.025em; line-height: 1.04; text-wrap: balance; }
+.stage__sub { font-size: var(--fs-lead); color: var(--st-mute); }
+.stage__price .st-price__v { font-size: clamp(24px, 2vw, 30px); font-weight: 600; letter-spacing: -.02em; }
+.stage__price .st-price__k { font-size: var(--fs-ui); }
+.stage__spec { display: grid; gap: 18px; padding-block: 18px 2px; border-top: 1px solid var(--garis); }
+.stage--dark .stage__spec { border-color: rgba(255, 255, 255, .12); }
+.stage__cta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.stage__cta .btn { justify-content: center; gap: 10px; padding: 8px 18px; }
+.stage__cta .btn .i { width: 20px; height: 20px; }
+.stage__cta.stage__cta--one { grid-template-columns: minmax(0, 1fr); max-width: 340px; }
+.st-short { display: none; }
+.stage__more { align-self: flex-start; min-height: 44px; padding-bottom: 0; }
+
+@media (max-width: 1100px) {
+  .stage { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+  .stage__cta { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 860px) {
+  .stage { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .stage__pic { aspect-ratio: 16 / 11; border-radius: 20px; }
+  .stage__txt { gap: 14px; }
+  .stage__name { font-size: clamp(30px, 8.4vw, 40px); }
+  .stage__sub { font-size: 16px; }
+  /* phone: price and actions first, details after */
+  .stage__head { order: 1; } .stage__price { order: 2; } .stage__cta { order: 3; } .stage__spec { order: 4; } .stage__more { order: 5; }
+  .stage__cta { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+  .stage__cta .btn { min-height: 52px; padding-inline: 10px; gap: 8px; font-size: 15px; }
+  .stage__cta .btn .i { width: 18px; height: 18px; }
+  .stage__spec { padding-top: 14px; }
+}
+@media (max-width: 440px) {
+  .st-long { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .st-short { display: inline; }
+}
+@media (max-width: 360px) {
+  .stage__cta { grid-template-columns: minmax(0, 1fr); }
+}

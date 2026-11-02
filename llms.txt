@@ -1,0 +1,51 @@
+# Moto Ijo
+
+> Moto Ijo adalah distributor resmi GODA di Palmerah, Jakarta Barat. Showroom ini menjual 13 model motor listrik GODA dalam 2 seri, dengan test ride gratis, simulasi cicilan, servis, dan sparepart.
+
+Alamat: Ruko Palmerah Barat Raya No. 12B, Kel. Palmerah, Jakarta Barat 11480 (seberang Bank BRI Palmerah). Buka setiap hari, 08.30–20.00. WhatsApp 0819-5255-7572 (juga 0878-8122-5199). Kode dealer di jaringan resmi GODA: GD02-240025. Rating Google Maps 5,0 dari 440 ulasan.
+
+Situs ini milik Moto Ijo, bukan situs resmi GODA. Harga dari daftar harga Moto Ijo, 31 Okt 2026. Stok tidak ditampilkan di situs: tanyakan lewat WhatsApp.
+
+## Motorbike Series
+
+Motor 600–800 W, kecepatan 40–50 km/jam, jarak tempuh ±40–50 km.
+
+- [GODA Try Lite 005S](https://motoijo.com/goda-try-lite-gd005s.html): Motorbike Series, mulai Rp 3.899.000, jarak tempuh ±40 km, 40 km/jam, baterai 48V 12Ah, motor 600 W
+- [GODA Apollo Lite 118S](https://motoijo.com/goda-apollo-lite-118s.html): Motorbike Series, mulai Rp 3.799.000, jarak tempuh ±40 km, 40 km/jam, baterai 48V 12Ah, motor 600 W
+- [GODA Sky 007](https://motoijo.com/goda-sky-gd007.html): Motorbike Series, mulai Rp 4.299.000, jarak tempuh ±45 km, 40 km/jam, baterai 48V 12Ah, motor 650 W
+- [GODA Aura 008](https://motoijo.com/goda-aura-gd008.html): Motorbike Series, mulai Rp 4.599.000, jarak tempuh ±45 km, 40 km/jam, baterai 48V 12Ah, motor 650 W
+- [GODA Obelisk G11](https://motoijo.com/goda-obelisk-g11.html): Motorbike Series, harga: tanya lewat WhatsApp, jarak tempuh 40 km, 40 km/jam, baterai 48V 12Ah, motor 650 W
+- [GODA Garuda X GD002X](https://motoijo.com/goda-garuda-002x.html): Motorbike Series, harga: tanya lewat WhatsApp, jarak tempuh ±50 km, 40 km/jam, baterai 48V 12Ah, motor 700 W
+- [GODA Oberon GD10](https://motoijo.com/goda-oberon-gd10.html): Motorbike Series, harga: tanya lewat WhatsApp, jarak tempuh 40 km, 40 km/jam, baterai 48V 12Ah, motor 650 W
+- [GODA Lemon 001](https://motoijo.com/goda-lemon-gd001.html): Motorbike Series, mulai Rp 5.699.000, jarak tempuh ±45 km, 40 km/jam, baterai 48V 12Ah, motor 650 W
+- [GODA Sunray G16](https://motoijo.com/goda-sunray-g16.html): Motorbike Series, mulai Rp 6.599.000, jarak tempuh 50 km, 50 km/jam, baterai 48V 20Ah, motor 800 W
+
+## Motorcycle Series
+
+Motor 2000–3000 W, kecepatan 75–100 km/jam, jarak tempuh 65–100 km, baterai lithium 64–72V.
+
+- [GODA Altair G17](https://motoijo.com/goda-altair-g17.html): Motorcycle Series, mulai Rp 13.499.000, jarak tempuh 65 km, 75 km/jam, baterai 64V 30Ah, motor 2000 W
+- [GODA Luna GD003](https://motoijo.com/goda-luna-gd003.html): Motorcycle Series, mulai Rp 13.999.000, jarak tempuh 90 km, 75 km/jam, baterai 64V 30Ah, motor 2000 W
+- [GODA Mecha Kingkong GD199](https://motoijo.com/goda-kingkong-gd199.html): Motorcycle Series, mulai Rp 16.999.000, jarak tempuh 100 km, 85 km/jam, baterai 72V 23Ah, motor 2000 W
+- [GODA Centurion G18](https://motoijo.com/goda-centurion-g18.html): Motorcycle Series, mulai Rp 17.499.000, jarak tempuh 100 km, 100 km/jam, baterai 64V 40Ah, motor 3000 W
+
+## Layanan
+
+- [Test ride](https://motoijo.com/test-ride.html): gratis, setiap hari, jam 09.00 sampai 15.00, di showroom Palmerah. Jadwal dikirim lewat WhatsApp.
+- [Simulasi cicilan](https://motoijo.com/simulasi-cicilan.html): tenor 3, 6, atau 12 bulan, bunga 2,95% per bulan, biaya penanganan 1% (Kredivo); juga Shopee PayLater dan BSI Hasanah Card. Angka akhir dari penyedia cicilannya.
+- [Servis dan sparepart](https://motoijo.com/servis.html): servis dan sparepart original GODA di showroom, booking lewat WhatsApp.
+- [Garansi](https://motoijo.com/garansi.html): garansi dari GODA, klaim lewat Moto Ijo dalam tiga langkah.
+- [Tentang Moto Ijo](https://motoijo.com/tentang.html): alamat, jam buka, foto showroom, ulasan.
+- [Semua model](https://motoijo.com/produk.html): 13 model dalam 2 seri.
+
+## Panduan
+
+- [Sepeda listrik atau motor listrik?](https://motoijo.com/panduan-sepeda-vs-motor-listrik.html): beda menurut PM 45 Tahun 2020 dan UU 22 Tahun 2009, dengan sumber.
+
+## Optional
+
+- [Profil lengkap (llms-full.txt)](https://motoijo.com/llms-full.txt): semua fakta di satu berkas teks.
+- [Bandingkan model](https://motoijo.com/bandingkan.html)
+- [Google Maps](https://maps.app.goo.gl/XFvZ4KERAK9xWYGp8)
+- [Instagram @moto_ijo](https://www.instagram.com/moto_ijo/)
+- [TikTok @moto_ijo](https://www.tiktok.com/@moto_ijo)

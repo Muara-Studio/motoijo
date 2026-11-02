@@ -1,0 +1,30 @@
+/* Moto Ijo · motion.css (1 Nov 2026): the shared motion layer. js/motion.js adds this file after first paint, so nothing
+   here changes layout. Transform and opacity only; prefers-reduced-motion = still. */
+
+/* odometer (js/motion.js odo): each digit is a wheel of 0–9 behind a one-line window. Every cell is one line tall and
+   top-aligned, so the line keeps its height; tabular figures keep the width. The value is also in a .sr span. */
+.odo { display: inline-block; white-space: nowrap; }
+.odo__c, .odo__d { display: inline-block; vertical-align: top; height: 1em; line-height: 1; }
+.odo__c { white-space: pre; }
+.odo__d { overflow: hidden; }
+.odo__w { display: block; transition: transform calc(380ms + var(--i, 0) * 70ms) var(--glide); }
+.odo__w > span { display: block; height: 1em; }
+
+/* data-shutter: a photo frame of the showroom opens like the ruko's rolling door as it scrolls into view (scroll-driven,
+   no script). Dark green slats (Moto Ijo's "ijo") with a bottom rail roll up; the photo settles from a little closer.
+   Browsers without scroll-driven animations, and reduced motion, show the photo as it is. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-shutter] { position: relative; view-timeline: --shutter block; }   /* named: the frame clips (overflow), so view() would track the frame itself */
+    [data-shutter]::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background:
+        linear-gradient(rgba(255, 255, 255, .16), rgba(255, 255, 255, .16)) 50% calc(100% - 6px) / 48px 4px no-repeat,
+        linear-gradient(#04261C, #04261C) 0 100% / 100% 16px no-repeat,
+        linear-gradient(rgba(255, 255, 255, .1), rgba(255, 255, 255, .1)) 0 calc(100% - 16px) / 100% 1px no-repeat,
+        repeating-linear-gradient(180deg, #0A4433 0 9px, #073326 9px 11px, #0E5340 11px 12px);
+      animation: m-shutter linear both; animation-timeline: --shutter; animation-range: entry 15% entry 100%; }
+    [data-shutter] > img { animation: m-shutter-in linear both; animation-timeline: --shutter; animation-range: entry 15% entry 100%; }
+  }
+}
+@keyframes m-shutter { to { transform: translateY(-101%); } }
+@keyframes m-shutter-in { from { transform: scale(1.08); } }
